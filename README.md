@@ -5,3 +5,6 @@ Para desarrollar el bot es necesario poetry para importar la dependencia discord
 ```
 python3 -m poetry init --no-interaction
 ```
+
+# TODO
+- Hacer que funcione el token en .env
