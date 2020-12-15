@@ -8,3 +8,4 @@ python3 -m poetry init --no-interaction
 
 # TODO
 - Hacer que funcione el token en .env
+- Crear comandos tipo pls Hitler con distintas imagenes
