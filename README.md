@@ -9,3 +9,9 @@ python3 -m poetry init --no-interaction
 # TODO
 - Hacer que funcione el token en .env
 - Crear comandos tipo pls Hitler con distintas imagenes
+- Añadir comando help
+- Añadir comando help
+- Mirar discord rich presence
+- Comando número aleatorio
+- Comando stickers que responga a un mensaje que se ha citado con -cry
+- Crear servidor
