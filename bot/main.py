@@ -31,10 +31,7 @@ async def on_message(message):
         await stickers.addSticker(message)
 
     if message.content.startswith("-"):
-        stickerName="../stickers/"
-        stickerName+=message.content[message.content.find("-")+1:].split()[0]
-        stickerName+=".jpeg"
-        await message.channel.send(file=discord.File(stickerName))
+        await stickers.useSticker(message)
 
     #TODO
     #if message.content=="+listStickers":
