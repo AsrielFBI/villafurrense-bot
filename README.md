@@ -15,3 +15,4 @@ python3 -m poetry init --no-interaction
 - Comando número aleatorio
 - Comando stickers que responga a un mensaje que se ha citado con -cry
 - Crear servidor
+- Modificar tamaño de stickers a 500x500 al añadir uno
