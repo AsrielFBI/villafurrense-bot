@@ -1,10 +1,14 @@
 import discord
 import os
 import stickers
+from PIL import Image
 
+
+# Variables
 stickersPath="../stickers"
-
 client = discord.Client()
+
+
 
 # When the bot starts
 @client.event
@@ -24,8 +28,7 @@ async def on_message(message):
         await message.channel.send('¿He oído yiff?')
 
     if message.content.startswith('+addSticker'):
-        await message.channel.send('Añadiendo sticker...')
-        stickers.addSticker(message)
+        await stickers.addSticker(message)
 
     if message.content.startswith("-"):
         stickerName="../stickers/"
@@ -35,9 +38,6 @@ async def on_message(message):
 
     #TODO
     #if message.content=="+listStickers":
-        
-
-
 
 
 
