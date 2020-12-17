@@ -34,7 +34,7 @@ async def on_message(message):
         await message.channel.send(file=discord.File(stickerName))
 
     #TODO
-    if message.content=="+listStickers":
+    #if message.content=="+listStickers":
         
 
 
