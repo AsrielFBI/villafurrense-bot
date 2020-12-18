@@ -40,7 +40,7 @@ async def addSticker(message):
 @client.event
 async def useSticker(message):
     stickerName="../stickers/"
-    stickerName+=message.content[message.content.find("-")+1:].split()[0]
+    stickerName+=message.content[message.content.find("_")+1:].split()[0]
     stickerName+=".png"
     await message.channel.send(file=discord.File(stickerName))
 
