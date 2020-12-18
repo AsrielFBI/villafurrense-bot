@@ -17,3 +17,4 @@ python3 -m poetry init --no-interaction
 - Crear servidor
 - Modificar tamaño de stickers a 500x500 al añadir uno
 - Crear stickers animados (gif)
+- Go to horny jail meme
