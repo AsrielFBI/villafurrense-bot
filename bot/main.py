@@ -1,13 +1,12 @@
 import discord
 import os
 import stickers
-from PIL import Image
+import help
 
 
 # Variables
 stickersPath="../stickers"
 client = discord.Client()
-
 
 
 # When the bot starts
@@ -21,20 +20,23 @@ async def on_message(message):
     if message.author == client.user:
         return
     
-    if message.content.startswith('+owo'):
+    if message.content.startswith('*owo'):
         await message.channel.send('OwO!')
 
     if "yiff" in message.content:
         await message.channel.send('¿He oído yiff?')
 
-    if message.content.startswith('+addSticker'):
+    if message.content.startswith('*addSticker'):
         await stickers.addSticker(message)
 
-    if message.content.startswith("-"):
+    if message.content.startswith("_"):
         await stickers.useSticker(message)
 
-    if message.content=='+listStickers':
+    if message.content=='*listStickers':
         await stickers.listStickers(message)
+    if message.content=='*help':
+        await help.getHelp(message)
+
 
 
     #TODO
