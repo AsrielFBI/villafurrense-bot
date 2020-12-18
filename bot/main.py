@@ -37,6 +37,12 @@ async def on_message(message):
     if message.content=='*help':
         await help.getHelp(message)
 
+    if message.content=='*aputo':
+        output="Asriel puto"
+        await message.channel.send(output)
+
+
+
 
 
     #TODO
