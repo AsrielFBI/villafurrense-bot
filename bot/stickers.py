@@ -8,22 +8,31 @@ client = discord.Client()
 stickersPath='../stickers/'
 stickerSize=500
 
+
+ 
 @client.event
 async def addSticker(message):
+    """ Downloads a sticker and converts it to png if it is other format
+
+    Args:
+        message: contains the sticker to add
+    """
     stickerName=message.content[message.content.find(" ")+1:]
-    print(stickerName)
-    stickerFileName=stickerName+".jpeg"
-    print(stickerName)
+    stickerExtension=message.content.split(".")[-1]
+    if stickerExtension=='jpg':
+        stickerFileName=stickerName+".jpg"
+    else:
+        stickerFileName=stickerName+".png"
     stickerUrl=message.attachments[0].url
-    print(stickerUrl)
-    var="wget -O ../stickers/%s %s"%(stickerFileName,stickerUrl)
+    var="wget -O ../stickers/%s %s"%(stickerFileName, stickerUrl)
     stickerPath="../stickers/%s"%(stickerFileName)
-    print(var)
     os.system(var)
     convertPic(stickerPath, stickerName)
+
     
-    var2="rm "+stickerPath
-    os.system(var2)
+    if stickerExtension=='jpg':
+        var2="rm "+stickerPath
+        os.system(var2)
     await message.channel.send("Sticker "+stickerName+" añadido")
 
 
@@ -34,7 +43,6 @@ async def useSticker(message):
     stickerName+=message.content[message.content.find("-")+1:].split()[0]
     stickerName+=".png"
     await message.channel.send(file=discord.File(stickerName))
-#def listStickers():
 
 
 
@@ -48,3 +56,12 @@ def convertPic(picture, stickerName):
 
     img.save(stickersPath+stickerName+'.png')
     
+
+@client.event
+async def listStickers(message):
+    str=os.listdir(stickersPath)
+
+    str[:] = [s.replace('.png', '') for s in str]
+    str[:] = [s.replace("'", '') for s in str]
+    await message.channel.send(str)
+

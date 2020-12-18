@@ -33,6 +33,10 @@ async def on_message(message):
     if message.content.startswith("-"):
         await stickers.useSticker(message)
 
+    if message.content=='+listStickers':
+        await stickers.listStickers(message)
+
+
     #TODO
     #if message.content=="+listStickers":
 
