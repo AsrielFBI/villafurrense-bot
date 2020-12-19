@@ -56,7 +56,6 @@ async def on_message(message):
         if message.content.startswith(stickerActivator):
             # do something here, change to whatever you want
             await bot.send_message(message.channel, stickers.useSticker(message))
-        await bot.process_commands(message)
 
 
 
