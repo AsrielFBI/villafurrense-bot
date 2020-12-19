@@ -59,7 +59,8 @@ def checkSticker(stickerName, stickerExtension):
         stickerExtension ([String]): [description]
 
     Returns:
-        [type]: [description]
+        [0]: [name used by other sticker]
+        [1]: [if file extension is correct]
     """
     str=os.listdir(stickersPath)
     str[:] = [s.replace('.png', '') for s in str]
@@ -97,3 +98,9 @@ async def listStickers(message):
     str[:] = [s.replace("'", '') for s in str]
     await message.channel.send(str)
 
+@client.event
+async def deleteSticker(message):
+    stickerName=message.content.split()[-1]
+    str='rm '+stickersPath+stickerName
+    os.system(str)
+    await message.channel.send(stickerName+' eliminado')

@@ -38,6 +38,7 @@ async def on_message(message):
 
     if message.content==commandActivator+'list':
         await stickers.listStickers(message)
+
     if message.content==commandActivator+'help':
         await help.getHelp(message)
 
@@ -45,12 +46,8 @@ async def on_message(message):
         output="Asriel puto"
         await message.channel.send(output)
 
-
-
-
-
-    #TODO
-    #if message.content=="+listStickers":
+    if message.content.startswith(commandActivator+'del'):
+        stickers.deleteSticker(message)
 
 
 
