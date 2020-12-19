@@ -6,20 +6,20 @@ import help
 
 # Variables
 stickersPath="../stickers"
-client = discord.Client()
+bot = discord.bot()
 commandActivator='fur '
 stickerActivator='s'
 
 
 # When the bot starts
-@client.event
+@bot.event
 async def on_ready():
-    print('We have logged in as {0.user}'.format(client))
+    print('We have logged in as {0.user}'.format(bot))
 
 # When a message is posted
-@client.event
+@bot.event
 async def on_message(message):
-    if message.author == client.user:
+    if message.author == bot.user:
         return
     
     if message.content==('owo'):
@@ -53,4 +53,5 @@ async def on_message(message):
 
 
 
-client.run('Nzg4NDc3MDcyOTU1NjcwNTI4.X9kEfw.yg5Q_RitwWG7K0dTlQPs4-umziQ')
+
+bot.run('Nzg4NDc3MDcyOTU1NjcwNTI4.X9kEfw.yg5Q_RitwWG7K0dTlQPs4-umziQ')
