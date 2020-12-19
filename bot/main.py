@@ -7,7 +7,7 @@ import help
 # Variables
 stickersPath="../stickers"
 client = discord.Client()
-commandActivator='fur'
+commandActivator='fur '
 stickerActivator='s'
 
 
@@ -28,18 +28,18 @@ async def on_message(message):
     if "yiff" in message.content:
         await message.channel.send('¿He oído yiff?')
 
-    if message.content.startswith(commandActivator+' add'):
+    if message.content.startswith(commandActivator+'add'):
         await stickers.addSticker(message)
 
     if message.content.startswith(stickerActivator):
         await stickers.useSticker(message)
 
-    if message.content==commandActivator+' list':
+    if message.content==commandActivator+'list':
         await stickers.listStickers(message)
-    if message.content=='*help':
+    if message.content==commandActivator+'help':
         await help.getHelp(message)
 
-    if message.content==commandActivator+' aputo':
+    if message.content==commandActivator+'aputo':
         output="Asriel puto"
         await message.channel.send(output)
 
