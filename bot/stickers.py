@@ -5,9 +5,10 @@ from PIL import Image
 
 # Variables
 client = discord.Client()
-stickersPath='../stickers/'
 
-if os.path.isfile(stickersPath):
+if os.path.isfile('../stickers'):
+    stickersPath='../stickers/'
+else:
     stickersPath='/app/stickers/'
     
 stickerSize=500
