@@ -6,6 +6,10 @@ from PIL import Image
 # Variables
 client = discord.Client()
 stickersPath='../stickers/'
+
+if os.path.isfile(stickersPath):
+    stickersPath='/app/stickers/'
+    
 stickerSize=500
 
 
@@ -33,8 +37,8 @@ async def addSticker(message):
         stickerFileName=stickerName+".png"
 
     stickerUrl=message.attachments[0].url
-    var="wget -O ../stickers/%s %s"%(stickerFileName, stickerUrl)
-    stickerPath="../stickers/%s"%(stickerFileName)
+    var="wget -O %s%s %s"%(stickersPath, stickerFileName, stickerUrl)
+    stickerPath="%s%s"%(stickersPath ,stickerFileName)
     os.system(var)
     convertPic(stickerPath, stickerName)
 
@@ -66,7 +70,7 @@ def checkSticker(stickerName, stickerExtension):
 
 @client.event
 async def useSticker(message):
-    stickerName="../stickers/"
+    stickerName=stickersPath
     stickerName+=message.content[message.content.find(" ")+1:].split()[0]
     stickerName+=".png"
     await message.channel.send(file=discord.File(stickerName))
