@@ -17,12 +17,21 @@ async def addSticker(message):
     Args:
         message: contains the sticker to add
     """
-    stickerName=message.content[message.content.find(" ")+1:]
+    stickerName=message.content.split()[-1]
+    print(stickerName)
     stickerExtension=message.content.split(".")[-1]
+    if checkSticker(stickerName, stickerExtension)==0:
+        await message.channel.send("El nombre de sticker ya existe")
+        return
+    if checkSticker(stickerName, stickerExtension)==1:
+        await message.channel.send("El tipo de archivo no es válido")
+        return
+    
     if stickerExtension=='jpg':
         stickerFileName=stickerName+".jpg"
     else:
         stickerFileName=stickerName+".png"
+
     stickerUrl=message.attachments[0].url
     var="wget -O ../stickers/%s %s"%(stickerFileName, stickerUrl)
     stickerPath="../stickers/%s"%(stickerFileName)
@@ -37,10 +46,28 @@ async def addSticker(message):
 
 
 
+def checkSticker(stickerName, stickerExtension):
+    """[summary]
+
+    Args:
+        stickerName ([String]): [description]
+        stickerExtension ([String]): [description]
+
+    Returns:
+        [type]: [description]
+    """
+    str=os.listdir(stickersPath)
+    str[:] = [s.replace('.png', '') for s in str]
+    str[:] = [s.replace("'", '') for s in str]
+    if stickerName in str:
+        return 0
+    if stickerExtension in ['jpg', 'png']:
+        return 1
+
 @client.event
 async def useSticker(message):
     stickerName="../stickers/"
-    stickerName+=message.content[message.content.find("_")+1:].split()[0]
+    stickerName+=message.content[message.content.find(" ")+1:].split()[0]
     stickerName+=".png"
     await message.channel.send(file=discord.File(stickerName))
 
