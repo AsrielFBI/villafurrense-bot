@@ -7,7 +7,7 @@ import help
 
 # Variables
 stickersPath="../stickers"
-bot = discord.bot()
+bot = discord.Client()
 commandActivator='fur '
 stickerActivator='s'
 
