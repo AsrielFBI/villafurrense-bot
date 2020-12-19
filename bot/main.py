@@ -47,7 +47,7 @@ async def on_message(message):
         await message.channel.send(output)
 
     if message.content.startswith(commandActivator+'del'):
-        stickers.deleteSticker(message)
+        await stickers.deleteSticker(message)
 
 
 
