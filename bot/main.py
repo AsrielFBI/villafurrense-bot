@@ -20,6 +20,8 @@ async def on_ready():
 # When a message is posted
 @bot.event
 async def on_message(message):
+
+    n=0
     if message.author == bot.user:
         return
     
@@ -72,7 +74,6 @@ async def on_message(message):
             await message.channel.send('Has acertado')
         else:
             await message.channel.send('Has fallado')
-                
                 
 
 
