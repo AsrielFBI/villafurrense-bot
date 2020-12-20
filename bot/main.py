@@ -1,4 +1,3 @@
-from bot.stickers import useSticker
 import discord
 import os
 import stickers
@@ -58,11 +57,18 @@ async def on_message(message):
     if message.content.startswith(commandActivator+'del'):
         await stickers.deleteSticker(message)
 
+    if message.content.startswith(commandActivator+'trauma'):
+        await memes.trauma(message)
+
     ## FIXME
     if bot.user.id != message.author.id:
         if message.content.startswith(stickerActivator):
             # do something here, change to whatever you want
             await message.channel.send(message.channel, stickers.useSticker(message))
+
+    #if (message.mentions.__len__()>0):
+    #    for user in message.mentions:
+    #        print(user.avatar_url)
 
 
 
