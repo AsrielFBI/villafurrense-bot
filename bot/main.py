@@ -11,12 +11,22 @@ stickersPath="../stickers"
 bot = discord.Client()
 commandActivator='fur '
 stickerActivator='s'
+statusVar=discord.Status.do_not_disturb
 
 # When the bot starts
 @bot.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(bot))
-    await bot.change_presence(status=discord.Status.online,activity=discord.CustomActivity.name('uwu'))
+    await bot.change_presence(status=statusVar,activity=discord.CustomActivity.name('uwu'))
+
+
+def changeStatus(input : str):
+    if str=='online':
+        statusVar=discord.Status.online
+    if str=='offline':
+        statusVar=discord.Status.offline
+    if str=='do_not_disturb':
+        statusVar=discord.Status.do_not_disturb
 
 # When a message is posted
 @bot.event
@@ -79,9 +89,10 @@ async def on_message(message):
             # do something here, change to whatever you want
             await message.channel.send(message.channel, stickers.useSticker(message))
 
-    #if (message.mentions.__len__()>0):
-    #    for user in message.mentions:
-    #        print(user.avatar_url)
+    if message.content.startswith(commandActivator+'status'):
+        changeStatus(message.content.split()[-1])
+
+
 
 
 
