@@ -1,10 +1,10 @@
 Stickers
-- Usar un sticker: s <nombre_sticker>
-- Añadir sticker: Seleccionar una imagen y escribir fur add <nombre_sticker> en la caja de comentario
-- Ver stickers disponibles: fur list
-- Llamar puto a Asriel: fur aputo
+- Usar un sticker: `s <nombre_sticker>`
+- Añadir sticker: Seleccionar una imagen y escribir `fur add <nombre_sticker>` en la caja de comentario
+- Ver stickers disponibles: `fur list`
+- Llamar puto a Asriel: `fur aputo`
 
 Memes
-- fur trauma @<usuario>
-- fur horny @<usuario>
-- fur patada @<usuario>
+- `fur trauma @<usuario>`
+- `fur horny @<usuario>`
+- `fur patada @<usuario>`
