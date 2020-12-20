@@ -25,7 +25,7 @@ async def version(context):
 @bot.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(bot))
-    await bot.change_presence(status=statusVar,activity=discord.Activity('uwu'))
+    await bot.change_presence(status=statusVar,activity=discord.Game('Minecraft'))
 
 
 def changeStatus(input : str):
