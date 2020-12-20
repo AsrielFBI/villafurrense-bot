@@ -1,5 +1,6 @@
 from bot.stickers import useSticker
 import discord
+from discord.ext import commands
 import os
 import stickers
 import help
@@ -8,7 +9,7 @@ import random
 
 # Variables
 stickersPath="../stickers"
-bot = discord.Client()
+bot=commands.Bot(command_prefix='fur ', description=description)
 commandActivator='fur '
 stickerActivator='s'
 
@@ -17,11 +18,13 @@ stickerActivator='s'
 async def on_ready():
     print('We have logged in as {0.user}'.format(bot))
 
+@bot.command()
+async def test(rest : str):
+    await bot.say(str)
+
 # When a message is posted
 @bot.event
 async def on_message(message):
-
-    n=0
     if message.author == bot.user:
         return
     
@@ -46,7 +49,6 @@ async def on_message(message):
 
     if message.content==commandActivator+'list':
         await stickers.listStickers(message)
-
     if message.content==commandActivator+'help':
         await help.getHelp(message)
 
