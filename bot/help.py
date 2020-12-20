@@ -3,15 +3,11 @@ import os
 
 client = discord.Client()
 
-# Files
-f = open('help.txt', 'r')
-general=f.read()
-
-
-
 
 @client.event
 async def getHelp(message, general):
-    
+    f = open('help.txt', 'r')
+    general=f.read()
     await message.channel.send(general)
+    f.close()
 
