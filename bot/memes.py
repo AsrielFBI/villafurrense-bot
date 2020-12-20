@@ -26,8 +26,8 @@ async def trauma(message):
     background = Image.open(memePath+"trauma.png").convert("RGBA")
     width, height = background.size
     output=Image.new("RGBA",(width,height))
-    img1 = Image.open(memePath+"01.png").convert("RGBA")
-    output.paste(img1, (39,400), img1)
+    img = Image.open(memePath+"01.png").convert("RGBA")
+    output.paste(img, (39,400), img)
     output.paste(background, (0,0), background)
     output.save(memePath+"output.png","PNG")
 
