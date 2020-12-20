@@ -4,20 +4,28 @@ import stickers
 import help
 import random
 import memes
+from discord.ext import commands
 
 
 # Variables
 stickersPath="../stickers"
-bot = discord.Client()
+bot = commands.Bot(command_prefix='fur')
 commandActivator='fur '
 stickerActivator='s'
 statusVar=discord.Status.do_not_disturb
+
+
+@bot.command(name='version')
+async def version(context):
+    await context.message.channel.send("hola que ase")
+
+
 
 # When the bot starts
 @bot.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(bot))
-    await bot.change_presence(status=statusVar,activity=discord.CustomActivity.name('uwu'))
+    await bot.change_presence(status=statusVar,activity=discord.Activity.application_id)
 
 
 def changeStatus(input : str):
