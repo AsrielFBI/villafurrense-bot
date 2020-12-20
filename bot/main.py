@@ -61,10 +61,10 @@ async def on_message(message):
     if bot.user.id != message.author.id:
         if message.content.startswith(stickerActivator):
             # do something here, change to whatever you want
-            await bot.send_message(message.channel, stickers.useSticker(message))
+            await message.channel.send(message.channel, stickers.useSticker(message))
 
     if message.content.startswith('guess'):
-        await bot.send_message(message.channel, 'Guess a number between 1 to 10')
+        await message.channel.send(message.channel, 'Guess a number between 1 to 10')
 
         def guess_check(m):
             return m.content.isdigit()
@@ -73,12 +73,12 @@ async def on_message(message):
         answer = random.randint(1, 10)
         if guess is None:
             fmt = 'Sorry, you took too long. It was {}.'
-            await bot.send_message(message.channel, fmt.format(answer))
+            await message.channel.send(message.channel, fmt.format(answer))
             return
         if int(guess.content) == answer:
-            await bot.send_message(message.channel, 'You are right!')
+            await message.channel.send(message.channel, 'You are right!')
         else:
-            await bot.send_message(message.channel, 'Sorry. It is actually {}.'.format(answer))
+            await message.channel.send(message.channel, 'Sorry. It is actually {}.'.format(answer))
 
     await bot.process_commands(message) #<-- This is to bypass on_message(): and still process bot.commands.
                 
