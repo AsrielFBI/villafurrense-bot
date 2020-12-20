@@ -30,7 +30,7 @@ async def on_message(message):
     if message.content.lower()==('7w7'):
         await message.channel.send(':eyes:')
     if message.content.lower()==('ewe'):
-        await message.channel.send('ewe!')
+        await message.channel.send('EwE!')
     
 
     if "yiff" in message.content:
