@@ -20,8 +20,6 @@ async def on_ready():
 # When a message is posted
 @bot.event
 async def on_message(message):
-
-    n=0
     if message.author == bot.user:
         return
     
@@ -68,6 +66,10 @@ async def on_message(message):
         await memes.patada(message)
     if message.content.startswith(commandActivator+'cringe'):
         await memes.cringe(message)
+
+
+    if(message.content == 'ping'):
+        await message.reply('pong')
 
     if message.content.startswith(commandActivator+'random'):
         max=message.content.split()[-1]
