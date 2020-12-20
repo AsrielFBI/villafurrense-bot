@@ -63,27 +63,6 @@ async def on_message(message):
             # do something here, change to whatever you want
             await message.channel.send(message.channel, stickers.useSticker(message))
 
-    if message.content.startswith('guess'):
-        await message.channel.send('Guess a number between 1 to 10')
-
-        def guess_check(m):
-            return m.content.isdigit()
-
-        guess = await bot.wait_for_message(timeout=5.0, author=message.author, check=guess_check)
-        answer = random.randint(1, 10)
-        if guess is None:
-            fmt = 'Sorry, you took too long. It was {}.'
-            await message.channel.send(fmt.format(answer))
-            return
-        if int(guess.content) == answer:
-            await message.channel.send('You are right!')
-        else:
-            await message.channel.send('Sorry. It is actually {}.'.format(answer))
-
-                
-
-
-
 
 
 
