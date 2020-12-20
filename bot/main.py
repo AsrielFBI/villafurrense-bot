@@ -59,6 +59,8 @@ async def on_message(message):
 
     if message.content.startswith(commandActivator+'trauma'):
         await memes.trauma(message)
+    if message.content.startswith(commandActivator+'horny'):
+        await memes.horny(message)
 
     if message.content.startswith(commandActivator+'random'):
         max=message.content.split()[-1]

@@ -41,6 +41,41 @@ async def trauma(message):
 
 
 
+
+@client.event
+async def horny(message):
+    """Creates a trauma meme with the user photo
+
+    Args:
+        message ([type]): [description]
+    """
+
+    # Get user avatar
+    avatarUrl=message.mentions[0].avatar_url
+    var="wget -O %s%s %s"%(memePath, "01.webp", avatarUrl)
+    os.system(var)
+    convertPic(memePath+"01.webp","01",300)
+
+    # Open images
+    background = Image.open(memePath+"horny.png").convert("RGBA")
+    width, height = background.size
+    output=Image.new("RGBA",(width,height))
+    img = Image.open(memePath+"01.png").convert("RGBA")
+    output.paste(img, (410,180), img)
+    output.paste(background, (0,0), background)
+    output.save(memePath+"output.png","PNG")
+
+    # Send meme
+    await message.channel.send(file=discord.File(memePath+"output.png"))
+
+    # Delete user avatar and output
+    os.system("rm "+memePath+"01.webp")
+    os.system("rm "+memePath+"output.png")
+    os.system("rm "+memePath+"01.png")
+
+
+
+
 def convertPic(picture, imgName, imgSize):
     img = Image.open(picture)
 
