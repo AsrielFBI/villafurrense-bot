@@ -53,6 +53,9 @@ async def on_message(message):
     if message.content==commandActivator+'aputo':
         output="Asriel puto"
         await message.channel.send(output)
+    if message.content==commandActivator+'cputo':
+        output="Cracker puto"
+        await message.channel.send(output)
 
     if message.content.startswith(commandActivator+'del'):
         await stickers.deleteSticker(message)
