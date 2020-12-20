@@ -16,6 +16,7 @@ stickerActivator='s'
 @bot.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(bot))
+    await bot.change_presence(status=discord.Status.online,activity=discord.CustomActivity.name('uwu'))
 
 # When a message is posted
 @bot.event
@@ -66,10 +67,6 @@ async def on_message(message):
         await memes.patada(message)
     if message.content.startswith(commandActivator+'cringe'):
         await memes.cringe(message)
-
-
-    if(message.content == 'ping'):
-        await message.reply('pong')
 
     if message.content.startswith(commandActivator+'random'):
         max=message.content.split()[-1]
