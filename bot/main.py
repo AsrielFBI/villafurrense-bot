@@ -62,7 +62,7 @@ async def on_message(message):
 
     if message.content.startswith(commandActivator+'random'):
         max=message.content.split()[-1]
-        await message.channel.send(random(max))
+        await message.channel.send(random.randint(0, max))
 
     ## FIXME
     if bot.user.id != message.author.id:
@@ -79,7 +79,3 @@ async def on_message(message):
 
 bot.run('Nzg4NDc3MDcyOTU1NjcwNTI4.X9kEfw.yg5Q_RitwWG7K0dTlQPs4-umziQ')
 
-
-
-def random(max : int):
-    return random.randint(0, max)
