@@ -23,11 +23,11 @@ async def on_message(message):
     if message.author == bot.user:
         return
     
-    if message.content==('owo'):
+    if message.content.lower()==('owo'):
         await message.channel.send('OwO!')
-    if message.content==('uwu'):
+    if message.content.lower()==('uwu'):
         await message.channel.send('UwU!')
-    if message.content==('7w7'):
+    if message.content.lower()==('7w7'):
         await message.channel.send(':eyes:')
 
     if "yiff" in message.content:
