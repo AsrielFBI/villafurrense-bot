@@ -3,10 +3,10 @@ from PIL import Image
 import os
 
 client = discord.Client()
-#if os.path.isfile('../memes/'):
-memePath='../memes/'
-#else:
-#  memePath='/app/memes/'
+if os.path.isfile('../memes/'):
+    memePath='../memes/'
+else:
+    memePath='/app/memes/'
 
 @client.event
 async def trauma(message):
