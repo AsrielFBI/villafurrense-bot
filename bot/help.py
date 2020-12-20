@@ -5,7 +5,7 @@ client = discord.Client()
 
 
 @client.event
-async def getHelp(message, general):
+async def getHelp(message):
     f = open('help.txt', 'r')
     general=f.read()
     await message.channel.send(general)
