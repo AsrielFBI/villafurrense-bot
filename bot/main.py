@@ -62,6 +62,7 @@ async def on_message(message):
 
     if message.content.startswith(commandActivator+'random'):
         max=message.content.split()[-1]
+        print(max)
         output="%s"%random.randint(0, max)
         await message.channel.send(output)
 
