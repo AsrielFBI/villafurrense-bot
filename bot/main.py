@@ -1,18 +1,14 @@
 from bot.stickers import useSticker
 import discord
-from discord.ext import commands
 import os
 import stickers
 import help
 import random
 
-description="uwu"
-bot=commands.Bot(command_prefix='fur ', description=description)
-
-
 
 # Variables
 stickersPath="../stickers"
+bot = discord.Client()
 commandActivator='fur '
 stickerActivator='s'
 
@@ -21,13 +17,11 @@ stickerActivator='s'
 async def on_ready():
     print('We have logged in as {0.user}'.format(bot))
 
-@bot.command()
-async def test(rest : str):
-    await bot.say(rest)
-
 # When a message is posted
 @bot.event
 async def on_message(message):
+
+    n=0
     if message.author == bot.user:
         return
     
@@ -52,6 +46,7 @@ async def on_message(message):
 
     if message.content==commandActivator+'list':
         await stickers.listStickers(message)
+
     if message.content==commandActivator+'help':
         await help.getHelp(message)
 
@@ -85,7 +80,6 @@ async def on_message(message):
         else:
             await message.channel.send(message.channel, 'Sorry. It is actually {}.'.format(answer))
 
-    await bot.process_commands(message) #<-- This is to bypass on_message(): and still process bot.commands.
                 
 
 
