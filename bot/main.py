@@ -4,6 +4,7 @@ import os
 import stickers
 import help
 import random
+import memes
 
 
 # Variables
