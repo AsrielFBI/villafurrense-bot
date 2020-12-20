@@ -29,6 +29,9 @@ async def on_message(message):
         await message.channel.send('UwU!')
     if message.content.lower()==('7w7'):
         await message.channel.send(':eyes:')
+    if message.content.lower()==('ewe'):
+        await message.channel.send('ewe!')
+    
 
     if "yiff" in message.content:
         await message.channel.send('¿He oído yiff?')
