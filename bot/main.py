@@ -64,13 +64,13 @@ async def on_message(message):
 
     if message.content.startswith(commandActivator+'guess'):
         n = random.randint(0,10)
-        await bot.send_message('Adivina el numero entre 0 y 10 con guess <num>')
+        await message.channel.send('Adivina el numero entre 0 y 10 con guess <num>')
     if message.content.startswith('guess'):
         input=int(message.content.split()[-1])
         if input==n:
-            await bot.send_message('Has acertado')
+            await message.channel.send('Has acertado')
         else:
-            await bot.send_message('Has fallado')
+            await message.channel.send('Has fallado')
                 
                 
 
