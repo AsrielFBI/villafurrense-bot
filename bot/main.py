@@ -3,6 +3,7 @@ import discord
 import os
 import stickers
 import help
+import random
 
 
 # Variables
@@ -10,7 +11,7 @@ stickersPath="../stickers"
 bot = discord.Client()
 commandActivator='fur '
 stickerActivator='s'
-
+n=0
 
 # When the bot starts
 @bot.event
@@ -55,10 +56,26 @@ async def on_message(message):
     if message.content.startswith(commandActivator+'del'):
         await stickers.deleteSticker(message)
 
+    ## FIXME
     if bot.user.id != message.author.id:
         if message.content.startswith(stickerActivator):
             # do something here, change to whatever you want
             await bot.send_message(message.channel, stickers.useSticker(message))
+
+    if message.content.startswith(commandActivator+'guess'):
+        n = random.randint(0,10)
+        await bot.send_message('Adivina el numero entre 0 y 10 con guess <num>')
+    if message.content.startswith('guess'):
+        input=int(message.content.split()[-1])
+        if input==n:
+            await bot.send_message('Has acertado')
+        else:
+            await bot.send_message('Has fallado')
+                
+                
+
+
+
 
 
 
