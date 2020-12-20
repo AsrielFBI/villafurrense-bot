@@ -23,7 +23,7 @@ async def on_ready():
 
 @bot.command()
 async def test(rest : str):
-    await bot.say(str)
+    await bot.say(rest)
 
 # When a message is posted
 @bot.event
