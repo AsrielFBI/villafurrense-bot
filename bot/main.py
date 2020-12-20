@@ -65,7 +65,6 @@ async def on_message(message):
         n = random.randint(0,10)
         await message.channel.send('Adivina el numero entre 0 y 10 con guess <num>')
     if message.content.startswith('guess'):
-        n = random.randint(0,10)
         print('random: '+n)
         input=int(message.content.split()[-1])
         print('input: '+input)
