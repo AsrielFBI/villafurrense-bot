@@ -1,13 +1,17 @@
 import discord
 import os
 
-
-
 client = discord.Client()
+
+# Files
+f = open('example.txt', 'r')
+general=f.read()
+
+
 
 
 @client.event
-async def getHelp(message):
-    text="Usar un sticker: s <nombre_sticker>\nAñadir sticker: Seleccionar una imagen y escribir fur add <nombre_sticker> en la caja de comentario\nVer stickers disponibles: fur list"
-    await message.channel.send(text)
+async def getHelp(message, general):
+    
+    await message.channel.send(general)
 

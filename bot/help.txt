@@ -1,0 +1,4 @@
+- Usar un sticker: s <nombre_sticker>
+- Añadir sticker: Seleccionar una imagen y escribir fur add <nombre_sticker> en la caja de comentario
+- Ver stickers disponibles: fur list
+- Llamar puto a Asriel: fur aputo
