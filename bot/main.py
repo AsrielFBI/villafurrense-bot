@@ -6,10 +6,13 @@ import stickers
 import help
 import random
 
+description="uwu"
+bot=commands.Bot(command_prefix='fur ', description=description)
+
+
 
 # Variables
 stickersPath="../stickers"
-bot=commands.Bot(command_prefix='fur ', description=description)
 commandActivator='fur '
 stickerActivator='s'
 
