@@ -8,3 +8,4 @@ Memes
 - `fur trauma @<usuario>`
 - `fur horny @<usuario>`
 - `fur patada @<usuario>`
+- `fur cringe @<usuario>`
