@@ -100,6 +100,8 @@ async def on_message(message):
     if message.content.startswith(commandActivator+'status'):
         changeStatus(message.content.split()[-1])
 
+    await bot.process_commands(message)
+
 
 
 
