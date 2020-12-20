@@ -63,17 +63,24 @@ async def on_message(message):
             # do something here, change to whatever you want
             await bot.send_message(message.channel, stickers.useSticker(message))
 
-    if message.content.startswith(commandActivator+'guess'):
-        n = random.randint(0,10)
-        await message.channel.send('Adivina el numero entre 0 y 10 con guess <num>')
     if message.content.startswith('guess'):
-        print('random: '+n)
-        input=int(message.content.split()[-1])
-        print('input: '+input)
-        if input==n:
-            await message.channel.send('Has acertado')
+        await bot.send_message(message.channel, 'Guess a number between 1 to 10')
+
+        def guess_check(m):
+            return m.content.isdigit()
+
+        guess = await bot.wait_for_message(timeout=5.0, author=message.author, check=guess_check)
+        answer = random.randint(1, 10)
+        if guess is None:
+            fmt = 'Sorry, you took too long. It was {}.'
+            await bot.send_message(message.channel, fmt.format(answer))
+            return
+        if int(guess.content) == answer:
+            await bot.send_message(message.channel, 'You are right!')
         else:
-            await message.channel.send('Has fallado')
+            await bot.send_message(message.channel, 'Sorry. It is actually {}.'.format(answer))
+
+    await bot.process_commands(message) #<-- This is to bypass on_message(): and still process bot.commands.
                 
 
 
