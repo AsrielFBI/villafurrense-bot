@@ -1,10 +1,11 @@
 import discord
 import os
 import stickers
-import help
 import random
 import memes
 from discord.ext import commands
+from PIL import Image
+
 
 
 # Variables
@@ -15,8 +16,18 @@ stickerActivator='s'
 statusVar=discord.Status.do_not_disturb
 
 
+
+#helptxt='/app/bot/help.txt'
+helptxt='help.txt'
+memePath='../memes/'
+#memePath='/app/memes/'
+
+
+
+# Commands
 @bot.command(name='version')
 async def version(context):
+
     await context.message.channel.send("hola que ase")
 
 @bot.command(name='s')
@@ -27,7 +38,157 @@ async def s(context):
 @bot.command(name='aputo')
 async def aputo(context):
     await context.channel.send("Asriel puto")
+
+@bot.command(name='cputo')
+async def cputo(context):
+    await context.channel.send("Cracker puto")
+
+@bot.command(name='info')
+async def help(context):
+    f = open(helptxt, 'r')
+    general=f.read()
+    await context.channel.send(general)
+    f.close()
     
+################### Memes ##########################
+
+@bot.command(name='trauma')
+async def trauma(context, user : discord.Member=None):
+    
+    """Creates a trauma meme with the user photo
+
+    Args:
+        message ([type]): [description]
+    """
+
+    # Get user avatar
+    avatarUrl=user.avatar_url
+    var="wget -O %s%s %s"%(memePath, "01.webp", avatarUrl)
+    os.system(var)
+    convertPic(memePath+"01.webp","01",670)
+
+    # Open images
+    background = Image.open(memePath+"trauma.png").convert("RGBA")
+    width, height = background.size
+    output=Image.new("RGBA",(width,height))
+    img = Image.open(memePath+"01.png").convert("RGBA")
+    output.paste(img, (39,400), img)
+    output.paste(background, (0,0), background)
+    output.save(memePath+"output.png","PNG")
+
+    # Send meme
+    await context.channel.send(file=discord.File(memePath+"output.png"))
+
+    # Delete user avatar and output
+    os.system("rm "+memePath+"01.webp")
+    os.system("rm "+memePath+"output.png")
+    os.system("rm "+memePath+"01.png")
+
+
+@bot.command(name='horny')
+async def horny(context, user : discord.Member=None):
+    """Creates a horny meme with the user photo
+
+    Args:
+        message ([type]): [description]
+    """
+
+    # Get user avatar
+    avatarUrl=user.avatar_url
+    var="wget -O %s%s %s"%(memePath, "01.webp", avatarUrl)
+    os.system(var)
+    convertPic(memePath+"01.webp","01",300)
+
+    # Open images
+    background = Image.open(memePath+"horny.png").convert("RGBA")
+    width, height = background.size
+    output=Image.new("RGBA",(width,height))
+    img = Image.open(memePath+"01.png").convert("RGBA")
+    output.paste(img, (410,180), img)
+    output.paste(background, (0,0), background)
+    output.save(memePath+"output.png","PNG")
+
+    # Send meme
+    await context.channel.send(file=discord.File(memePath+"output.png"))
+
+    # Delete user avatar and output
+    os.system("rm "+memePath+"01.webp")
+    os.system("rm "+memePath+"output.png")
+    os.system("rm "+memePath+"01.png")
+
+@bot.command(name='patada')
+async def patada(context, user : discord.Member=None):
+    """Creates a patada meme with the user photo
+
+    Args:
+        message ([type]): [description]
+    """
+
+    # Get user avatar
+    avatarUrl=user.avatar_url
+    var="wget -O %s%s %s"%(memePath, "01.webp", avatarUrl)
+    os.system(var)
+    convertPic(memePath+"01.webp","01",110)
+
+    # Open images
+    background = Image.open(memePath+"patada.png").convert("RGBA")
+    width, height = background.size
+    output=Image.new("RGBA",(width,height))
+    img = Image.open(memePath+"01.png").convert("RGBA")
+    output.paste(img, (198,229), img)
+    output.paste(img, (348,917), img)
+    output.paste(background, (0,0), background)
+    output.save(memePath+"output.png","PNG")
+
+    # Send meme
+    await context.channel.send(file=discord.File(memePath+"output.png"))
+
+    # Delete user avatar and output
+    os.system("rm "+memePath+"01.webp")
+    os.system("rm "+memePath+"output.png")
+    os.system("rm "+memePath+"01.png")
+
+
+@bot.command(name='cringe')
+async def cringe(context, user : discord.Member=None):
+    """Creates a patada meme with the user photo
+
+    Args:
+        message ([type]): [description]
+    """
+
+    # Get user avatar
+    avatarUrl=user.avatar_url
+    var="wget -O %s%s %s"%(memePath, "01.webp", avatarUrl)
+    os.system(var)
+    convertPic(memePath+"01.webp","01",170)
+
+    # Open images
+    background = Image.open(memePath+"cringe.png").convert("RGBA")
+    width, height = background.size
+    output=Image.new("RGBA",(width,height))
+    img = Image.open(memePath+"01.png").convert("RGBA")
+    output.paste(img, (370,20), img)
+    output.paste(background, (0,0), background)
+    output.save(memePath+"output.png","PNG")
+
+    # Send meme
+    await context.channel.send(file=discord.File(memePath+"output.png"))
+
+    # Delete user avatar and output
+    os.system("rm "+memePath+"01.webp")
+    os.system("rm "+memePath+"output.png")
+    os.system("rm "+memePath+"01.png")
+
+
+def convertPic(picture, imgName, imgSize):
+    img = Image.open(picture)
+
+    wpercent = (imgSize/float(img.size[0]))
+    hsize = int((float(img.size[1])*float(wpercent)))
+    img = img.resize((imgSize,hsize), Image.ANTIALIAS)
+
+    img.save(memePath+imgName+'.png')
 
 
 
@@ -74,27 +235,17 @@ async def on_message(message):
     if message.content==commandActivator+'list':
         await stickers.listStickers(message)
 
-    if message.content==commandActivator+'help':
-        await help.getHelp(message)
-
-    #if message.content==commandActivator+'aputo':
-    #    output="Asriel puto"
-    #    await message.channel.send(output)
-    if message.content==commandActivator+'cputo':
-        output="Cracker puto"
-        await message.channel.send(output)
-
     if message.content.startswith(commandActivator+'del'):
         await stickers.deleteSticker(message)
 
-    if message.content.startswith(commandActivator+'trauma'):
-        await memes.trauma(message)
-    if message.content.startswith(commandActivator+'horny'):
-        await memes.horny(message)
-    if message.content.startswith(commandActivator+'patada'):
-        await memes.patada(message)
-    if message.content.startswith(commandActivator+'cringe'):
-        await memes.cringe(message)
+    #if message.content.startswith(commandActivator+'trauma'):
+    #    await memes.trauma(message)
+    #if message.content.startswith(commandActivator+'horny'):
+    #    await memes.horny(message)
+    #if message.content.startswith(commandActivator+'patada'):
+    #    await memes.patada(message)
+    #if message.content.startswith(commandActivator+'cringe'):
+    #    await memes.cringe(message)
 
     if message.content.startswith(commandActivator+'random'):
         max=message.content.split()[-1]
