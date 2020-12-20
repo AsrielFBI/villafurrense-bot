@@ -4,7 +4,7 @@ import os
 client = discord.Client()
 
 # Files
-f = open('example.txt', 'r')
+f = open('help.txt', 'r')
 general=f.read()
 
 
