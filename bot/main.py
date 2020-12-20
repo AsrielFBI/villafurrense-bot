@@ -9,7 +9,7 @@ from discord.ext import commands
 
 # Variables
 stickersPath="../stickers"
-bot = commands.Bot(command_prefix='fur')
+bot = commands.Bot(command_prefix='fur ')
 commandActivator='fur '
 stickerActivator='s'
 statusVar=discord.Status.do_not_disturb
@@ -18,6 +18,16 @@ statusVar=discord.Status.do_not_disturb
 @bot.command(name='version')
 async def version(context):
     await context.message.channel.send("hola que ase")
+
+@bot.command(name='s')
+async def s(context):
+    await stickers.useSticker(context)
+
+
+@bot.command(name='aputo')
+async def aputo(context):
+    await context.channel.send("Asriel puto")
+    
 
 
 
@@ -58,8 +68,8 @@ async def on_message(message):
     if message.content.startswith(commandActivator+'add'):
         await stickers.addSticker(message)
 
-    if message.content.startswith(stickerActivator):
-        await stickers.useSticker(message)
+    #if message.content.startswith(stickerActivator):
+    #    await stickers.useSticker(message)
 
     if message.content==commandActivator+'list':
         await stickers.listStickers(message)
@@ -67,9 +77,9 @@ async def on_message(message):
     if message.content==commandActivator+'help':
         await help.getHelp(message)
 
-    if message.content==commandActivator+'aputo':
-        output="Asriel puto"
-        await message.channel.send(output)
+    #if message.content==commandActivator+'aputo':
+    #    output="Asriel puto"
+    #    await message.channel.send(output)
     if message.content==commandActivator+'cputo':
         output="Cracker puto"
         await message.channel.send(output)
