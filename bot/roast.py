@@ -18,5 +18,5 @@ class roast(commands.Cog):
     async def cputo(context):
         await context.channel.send("Thedax puto")
 
-    def setup(bot):
-        bot.add_cog(roast(bot))
+def setup(bot):
+    bot.add_cog(roast(bot))
