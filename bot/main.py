@@ -13,7 +13,7 @@ stickersPath="../stickers"
 bot = commands.Bot(command_prefix='fur ')
 commandActivator='fur '
 stickerActivator='s'
-statusVar=discord.Status.do_not_disturb
+statusVar=discord.Status.online
 
 
 
@@ -200,7 +200,7 @@ def convertPic(picture, imgName, imgSize):
 @bot.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(bot))
-    await bot.change_presence(status=statusVar,activity=discord.Game('Minecraft'))
+    await bot.change_presence(status=statusVar,activity=discord.Game('Cosas Furries'))
 
 
 def changeStatus(input : str):
