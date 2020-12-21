@@ -255,6 +255,5 @@ extensions=['roast', 'memes']
 for extension in extensions:
     bot.load_extension(extension)
 
-bot.add_cog(memes())
 bot.run('Nzg4NDc3MDcyOTU1NjcwNTI4.X9kEfw.yg5Q_RitwWG7K0dTlQPs4-umziQ')
 
