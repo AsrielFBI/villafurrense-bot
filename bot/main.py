@@ -37,17 +37,7 @@ async def version(context):
     embed.add_field(name='Version', value='V0.2',inline=False)
     await context.message.channel.send(embed)
 
-@bot.command(name='aputo')
-async def aputo(context):
-    await context.channel.send("Asriel puto")
 
-@bot.command(name='cputo')
-async def cputo(context):
-    await context.channel.send("Cracker puto")
-
-@bot.command(name='tputo')
-async def cputo(context):
-    await context.channel.send("Thedax puto")
 
 @bot.command(name='info')
 async def help(context):
@@ -73,7 +63,7 @@ class memes(commands.Cog):
     @commands.command()
     async def trauma(self, context, *, user : discord.Member=None):
         
-        """Creates a trauma meme with the user photo
+        """Uso: fur trauma <@user>
 
         """
 
@@ -102,12 +92,9 @@ class memes(commands.Cog):
 
 
     @commands.command()
-    async def horny(context, user : discord.Member=None):
-        """ ```css 
-        Creates a horny meme with the user photo
+    async def horny(self, context, *, user : discord.Member=None):
+        """Uso: fur horny <@user>
 
-        Args:
-            message ([type]): [description]
         """
 
         # Get user avatar
@@ -134,11 +121,9 @@ class memes(commands.Cog):
         os.system("rm "+memePath+"01.png")
 
     @commands.command()
-    async def patada(context, user : discord.Member=None):
-        """Creates a patada meme with the user photo
+    async def patada(self, context, *, user : discord.Member=None):
+        """Uso: fur patada <@user>
 
-        Args:
-            message ([type]): [description]
         """
 
         # Get user avatar
@@ -167,11 +152,9 @@ class memes(commands.Cog):
 
 
     @commands.command()
-    async def cringe(context, user : discord.Member=None):
+    async def cringe(self, context, *, user : discord.Member=None):
         """Creates a patada meme with the user photo
 
-        Args:
-            message ([type]): [description]
         """
 
         # Get user avatar
@@ -272,5 +255,6 @@ async def on_message(message):
 
 
 bot.add_cog(memes())
+bot.add_cog(roast())
 bot.run('Nzg4NDc3MDcyOTU1NjcwNTI4.X9kEfw.yg5Q_RitwWG7K0dTlQPs4-umziQ')
 
