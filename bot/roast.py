@@ -7,15 +7,15 @@ class roast(commands.Cog):
 
 
     @commands.command(name='aputo')
-    async def aputo(context):
+    async def aputo(self, context, *, user : discord.Member=None):
         await context.channel.send("Asriel puto")
 
     @commands.command(name='cputo')
-    async def cputo(context):
+    async def cputo(self, context, *, user : discord.Member=None):
         await context.channel.send("Cracker puto")
 
     @commands.command(name='tputo')
-    async def cputo(context):
+    async def cputo(self, context, *, user : discord.Member=None):
         await context.channel.send("Thedax puto")
 
 def setup(bot):
