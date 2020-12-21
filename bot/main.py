@@ -30,8 +30,9 @@ stickersPath='/app/stickers/'
 # Commands
 @bot.command(name='version')
 async def version(context):
-
-    await context.message.channel.send("hola que ase")
+    embed=discord.Embed(title="Version", description='Version 0.2')
+    embed.add_field(name='Version', value='V0.2',inline=False)
+    await context.message.channel.send(embed)
 
 @bot.command(name='s')
 async def s(context):
@@ -56,6 +57,7 @@ async def help(context):
     general=f.read()
     await context.channel.send(general)
     f.close()
+
     
 ################### Memes ##########################
 
