@@ -13,6 +13,9 @@ stickersPath="../stickers"
 bot = commands.Bot(command_prefix='fur ')
 bot.remove_command('trauma')
 
+
+commandActivator='fur '
+stickerActivator='s '
 statusVar=discord.Status.online
 
 #helptxt='/app/bot/help.txt'
@@ -25,8 +28,8 @@ stickersPath='../stickers/'
 # Commands
 @bot.command(name='version')
 async def version(context):
-    embed=discord.Embed(title="Version", description='Version 0.2')
-    embed.add_field(name='Version', value='V0.2',inline=False)
+    embed=discord.Embed(title="FurBot", description='El mejor bot furro')
+    embed.add_field(name='Version', value='V 0.2',inline=False)
     await context.message.channel.send(embed=embed)
 
 
@@ -37,6 +40,7 @@ async def help(context):
     general=f.read()
     await context.channel.send(general)
     f.close()
+
 
 
 
