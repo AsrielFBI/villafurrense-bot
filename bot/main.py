@@ -61,12 +61,10 @@ async def help(context):
 
 class memes(commands.Cog):
     @commands.command()
-    async def trauma(context, user : discord.Member=None):
+    async def trauma(self, context, *, user : discord.Member=None):
         
         """Creates a trauma meme with the user photo
 
-        Args:
-            message ([type]): [description]
         """
 
         # Get user avatar
