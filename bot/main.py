@@ -3,6 +3,7 @@ import os
 import stickers
 import random
 import memes
+import roast
 from discord.ext import commands
 from PIL import Image
 
