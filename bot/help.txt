@@ -26,16 +26,17 @@
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-.Categoria de Memes (Fur [nombre])       
+.Categoria de Memes (Fur [nombre] [mencion])       
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
--cringe
--horny
--patada
--trauma
+-cringe = te pregunta si eres cringe equis de
+-horny = vete a la carcel por exceso de horny OwO
+-patada = bullying a la persona que menciones xd
+-trauma = esa persona que menciones te pregunta si da trauma
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Para toda esta ayuda, solo debes escribir el comando [fur help] o [fur info]. Si algo no va bien, @Teko o dm 
+,-'Zaffy'-,
 ```
