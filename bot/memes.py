@@ -6,8 +6,8 @@ import os
 
 
 
-memePath='/app/memes/'
-#memePath='../memes/'
+#memePath='/app/memes/'
+memePath='../memes/'
 class memes(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
