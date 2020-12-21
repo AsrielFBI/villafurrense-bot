@@ -14,13 +14,16 @@ bot = commands.Bot(command_prefix='fur ')
 commandActivator='fur '
 stickerActivator='s '
 statusVar=discord.Status.online
+stickerSize=500
 
 
+helptxt='/app/bot/help.txt'
+#helptxt='help.txt'
+memePath='/app/memes/'
+#memePath='../memes/'
+stickersPath='/app/stickers/'
+#stickersPath='../stickers/'
 
-#helptxt='/app/bot/help.txt'
-helptxt='help.txt'
-memePath='../memes/'
-#memePath='/app/memes/'
 
 
 
@@ -196,6 +199,15 @@ def convertPic(picture, imgName, imgSize):
 
 
 
+################ Stickers ###################
+@bot.command(name='s')
+async def useSticker(message):
+    stickerName=stickersPath
+    stickerName+=message.content[message.content.find(" ")+2:].split()[0]
+    stickerName+=".png"
+    await message.channel.send(file=discord.File(stickerName))
+
+
 # When the bot starts
 @bot.event
 async def on_ready():
@@ -233,23 +245,14 @@ async def on_message(message):
     if message.content.startswith(commandActivator+'add'):
         await stickers.addSticker(message)
 
-    if message.content.startswith(commandActivator+stickerActivator):
-        await stickers.useSticker(message)
+    #if message.content.startswith(commandActivator+stickerActivator):
+    #    await stickers.useSticker(message)
 
     if message.content==commandActivator+'list':
         await stickers.listStickers(message)
 
     if message.content.startswith(commandActivator+'del'):
         await stickers.deleteSticker(message)
-
-    #if message.content.startswith(commandActivator+'trauma'):
-    #    await memes.trauma(message)
-    #if message.content.startswith(commandActivator+'horny'):
-    #    await memes.horny(message)
-    #if message.content.startswith(commandActivator+'patada'):
-    #    await memes.patada(message)
-    #if message.content.startswith(commandActivator+'cringe'):
-    #    await memes.cringe(message)
 
     if message.content.startswith(commandActivator+'random'):
         max=message.content.split()[-1]
