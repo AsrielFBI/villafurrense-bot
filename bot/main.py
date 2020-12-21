@@ -60,6 +60,16 @@ async def help(context):
 ################### Memes ##########################
 
 class memes(commands.Cog):
+    def convertPic(picture, imgName, imgSize):
+        img = Image.open(picture)
+
+        wpercent = (imgSize/float(img.size[0]))
+        hsize = int((float(img.size[1])*float(wpercent)))
+        img = img.resize((imgSize,hsize), Image.ANTIALIAS)
+
+        img.save(memePath+imgName+'.png')
+
+
     @commands.command()
     async def trauma(self, context, *, user : discord.Member=None):
         
@@ -71,7 +81,7 @@ class memes(commands.Cog):
         avatarUrl=user.avatar_url
         var="wget -O %s%s %s"%(memePath, "01.webp", avatarUrl)
         os.system(var)
-        convertPic(memePath+"01.webp","01",670)
+        memes.convertPic(memePath+"01.webp","01",670)
 
         # Open images
         background = Image.open(memePath+"trauma.png").convert("RGBA")
@@ -103,7 +113,7 @@ class memes(commands.Cog):
         avatarUrl=user.avatar_url
         var="wget -O %s%s %s"%(memePath, "01.webp", avatarUrl)
         os.system(var)
-        convertPic(memePath+"01.webp","01",300)
+        memes.convertPic(memePath+"01.webp","01",300)
 
         # Open images
         background = Image.open(memePath+"horny.png").convert("RGBA")
@@ -134,7 +144,7 @@ class memes(commands.Cog):
         avatarUrl=user.avatar_url
         var="wget -O %s%s %s"%(memePath, "01.webp", avatarUrl)
         os.system(var)
-        convertPic(memePath+"01.webp","01",110)
+        memes.convertPic(memePath+"01.webp","01",110)
 
         # Open images
         background = Image.open(memePath+"patada.png").convert("RGBA")
@@ -167,7 +177,7 @@ class memes(commands.Cog):
         avatarUrl=user.avatar_url
         var="wget -O %s%s %s"%(memePath, "01.webp", avatarUrl)
         os.system(var)
-        convertPic(memePath+"01.webp","01",170)
+        memes.convertPic(memePath+"01.webp","01",170)
 
         # Open images
         background = Image.open(memePath+"cringe.png").convert("RGBA")
@@ -187,14 +197,6 @@ class memes(commands.Cog):
         os.system("rm "+memePath+"01.png")
 
 
-    def convertPic(picture, imgName, imgSize):
-        img = Image.open(picture)
-
-        wpercent = (imgSize/float(img.size[0]))
-        hsize = int((float(img.size[1])*float(wpercent)))
-        img = img.resize((imgSize,hsize), Image.ANTIALIAS)
-
-        img.save(memePath+imgName+'.png')
 
 
 
