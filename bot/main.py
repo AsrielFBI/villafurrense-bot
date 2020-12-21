@@ -43,6 +43,10 @@ async def aputo(context):
 async def cputo(context):
     await context.channel.send("Cracker puto")
 
+@bot.command(name='tputo')
+async def cputo(context):
+    await context.channel.send("Thedax puto")
+
 @bot.command(name='info')
 async def help(context):
     f = open(helptxt, 'r')
