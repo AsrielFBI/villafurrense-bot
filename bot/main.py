@@ -12,7 +12,7 @@ from PIL import Image
 stickersPath="../stickers"
 bot = commands.Bot(command_prefix='fur ')
 commandActivator='fur '
-stickerActivator='s'
+stickerActivator='s '
 statusVar=discord.Status.online
 
 
@@ -233,8 +233,8 @@ async def on_message(message):
     if message.content.startswith(commandActivator+'add'):
         await stickers.addSticker(message)
 
-    #if message.content.startswith(stickerActivator):
-    #    await stickers.useSticker(message)
+    if message.content.startswith(commandActivator+stickerActivator):
+        await stickers.useSticker(message)
 
     if message.content==commandActivator+'list':
         await stickers.listStickers(message)
