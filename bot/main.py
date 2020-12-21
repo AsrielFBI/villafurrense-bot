@@ -55,7 +55,7 @@ async def help(context):
     
 ################### Memes ##########################
 
-class memes:
+class memes(commands.Cog):
     @bot.command(name='trauma')
     async def trauma(context, user : discord.Member=None):
         
