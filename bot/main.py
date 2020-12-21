@@ -11,6 +11,10 @@ from PIL import Image
 # Variables
 stickersPath="../stickers"
 bot = commands.Bot(command_prefix='fur ')
+bot.remove_command('trauma')
+
+
+
 commandActivator='fur '
 stickerActivator='s '
 statusVar=discord.Status.online
@@ -56,7 +60,7 @@ async def help(context):
 ################### Memes ##########################
 
 class memes(commands.Cog):
-    @bot.command(name='trauma')
+    @commands.command()
     async def trauma(context, user : discord.Member=None):
         
         """Creates a trauma meme with the user photo
@@ -89,7 +93,7 @@ class memes(commands.Cog):
         os.system("rm "+memePath+"01.png")
 
 
-    @bot.command(name='horny')
+    @commands.command()
     async def horny(context, user : discord.Member=None):
         """Creates a horny meme with the user photo
 
@@ -120,7 +124,7 @@ class memes(commands.Cog):
         os.system("rm "+memePath+"output.png")
         os.system("rm "+memePath+"01.png")
 
-    @bot.command(name='patada')
+    @commands.command()
     async def patada(context, user : discord.Member=None):
         """Creates a patada meme with the user photo
 
@@ -153,7 +157,7 @@ class memes(commands.Cog):
         os.system("rm "+memePath+"01.png")
 
 
-    @bot.command(name='cringe')
+    @commands.command()
     async def cringe(context, user : discord.Member=None):
         """Creates a patada meme with the user photo
 
