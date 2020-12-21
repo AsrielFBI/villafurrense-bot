@@ -200,7 +200,7 @@ def convertPic(picture, imgName, imgSize):
 
 
 ################ Stickers ###################
-@bot.command(name='s')
+@bot.command(name='st')
 async def useSticker(message):
     stickerName=stickersPath
     stickerName+=message.content[message.content.find(" ")+2:].split()[0]
