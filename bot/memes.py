@@ -27,8 +27,9 @@ class memes(commands.Cog):
     @commands.command()
     async def trauma(self, context, *, user : discord.Member=None):
         
-        """Uso: fur trauma <@user>
+        """Oh no traumita
 
+            Uso: fur trauma "@<usuario>
         """
 
         # Get user avatar
@@ -57,8 +58,9 @@ class memes(commands.Cog):
 
     @commands.command()
     async def horny(self, context, *, user : discord.Member=None):
-        """Uso: fur horny <@user>
+        """Mucho horny
 
+            Uso: fur horny "@<usuario>
         """
 
         # Get user avatar
@@ -86,8 +88,9 @@ class memes(commands.Cog):
 
     @commands.command()
     async def patada(self, context, *, user : discord.Member=None):
-        """Uso: fur patada <@user>
-
+        """Te vas a comer mi pie
+            
+            Uso: fur patada "@<usuario>
         """
 
         # Get user avatar
@@ -117,8 +120,9 @@ class memes(commands.Cog):
 
     @commands.command()
     async def cringe(self, context, *, user : discord.Member=None):
-        """Creates a patada meme with the user photo
-
+        """That's cringy as fuck
+            
+            Uso: fur cringe "@<usuario>
         """
 
         # Get user avatar

@@ -13,17 +13,12 @@ stickersPath="../stickers"
 bot = commands.Bot(command_prefix='fur ')
 bot.remove_command('trauma')
 
-
-commandActivator='fur '
-stickerActivator='s '
 statusVar=discord.Status.online
 
-helptxt='/app/bot/help.txt'
-#helptxt='help.txt'
-memePath='/app/memes/'
-#memePath='../memes/'
-stickersPath='/app/stickers/'
-#stickersPath='../stickers/'
+#helptxt='/app/bot/help.txt'
+helptxt='help.txt'
+#stickersPath='/app/stickers/'
+stickersPath='../stickers/'
 
 
 
@@ -42,7 +37,6 @@ async def help(context):
     general=f.read()
     await context.channel.send(general)
     f.close()
-
 
 
 
