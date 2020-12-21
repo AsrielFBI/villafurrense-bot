@@ -203,7 +203,7 @@ def convertPic(picture, imgName, imgSize):
 @bot.command(name='st')
 async def useSticker(message):
     stickerName=stickersPath
-    stickerName+=message.content[message.content.find(" ")+2:].split()[0]
+    stickerName+=message.split()[-1]
     stickerName+=".png"
     await message.channel.send(file=discord.File(stickerName))
 
