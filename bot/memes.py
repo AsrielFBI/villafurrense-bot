@@ -105,7 +105,8 @@ class memes(commands.Cog):
         output=Image.new("RGBA",(width,height))
         img = Image.open(memePath+"01.png").convert("RGBA")
         output.paste(img, (198,229), img)
-        output.paste(img, (348,917), img)
+        img.thumbnail((90, 90), Image.ANTIALIAS)
+        output.paste(img, (348,915), img)
         output.paste(background, (0,0), background)
         output.save(memePath+"output.png","PNG")
 
