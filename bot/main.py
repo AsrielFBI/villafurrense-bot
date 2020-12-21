@@ -14,7 +14,7 @@ bot = commands.Bot(command_prefix='fur ')
 commandActivator='fur '
 stickerActivator='s '
 statusVar=discord.Status.online
-stickerSize=500
+
 
 
 helptxt='/app/bot/help.txt'
@@ -200,12 +200,7 @@ def convertPic(picture, imgName, imgSize):
 
 
 ################ Stickers ###################
-@bot.command(name='st')
-async def useSticker(message):
-    stickerName=stickersPath
-    stickerName+=message.split()[-1]
-    stickerName+=".png"
-    await message.channel.send(file=discord.File(stickerName))
+
 
 
 # When the bot starts
@@ -245,8 +240,8 @@ async def on_message(message):
     if message.content.startswith(commandActivator+'add'):
         await stickers.addSticker(message)
 
-    #if message.content.startswith(commandActivator+stickerActivator):
-    #    await stickers.useSticker(message)
+    if message.content.startswith(stickerActivator):
+        await stickers.useSticker(message)
 
     if message.content==commandActivator+'list':
         await stickers.listStickers(message)
