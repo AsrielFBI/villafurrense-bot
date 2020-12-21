@@ -4,20 +4,37 @@
  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 -aputo = se designa un insulto a Asriel   
--cputo = Se designa un insulto a Cracker   
--cringe = pone tu foto y te dije cringe :v
--help = Se designa este mensaje en pantalla
--horny =  Creates a horny meme with the user photo
--info = una movida rara. Habla con Teko xd    
--patada = Se desigan una imagen tuya y una patada
- 
+-cputo = Se designa un insulto a Cracker
+-tputo = Se designa para decirle un insulto a Thedax      
+-help = algo peor que esto
+-info = es esto bro    
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 .Categoria de Stickers (s [nombre-sticker])       
 
--tputo = Se designa para decirle un insulto a Thedax   
--trauma = Asigna un trauma a tu foto de perfil
- 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+-patata = meme en inglés. Hay que tener 200 IQ xd
+-cuter = me quiero acarisiar el cuello con un cuter :v   
+-michitriste = impuesto por la diosa Enana. Es el michitriste bro
+-exitante = te essita con la mirada ewe
+-mespanta = me espanta
+-mira = te mira y te embaraza 
+-shock = c quedo inmovil
+-explotar = allahakbar
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+.Categoria de Memes (Fur [nombre])       
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+-cringe
+-horny
+-patada
+-trauma
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Para toda esta ayuda, solo debes escribir el comando [fur help] o [fur info]. Si algo no va bien, @Teko o dm 
