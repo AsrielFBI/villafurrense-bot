@@ -103,7 +103,8 @@ class memes(commands.Cog):
 
     @commands.command()
     async def horny(context, user : discord.Member=None):
-        """Creates a horny meme with the user photo
+        """ ```css 
+        Creates a horny meme with the user photo
 
         Args:
             message ([type]): [description]
