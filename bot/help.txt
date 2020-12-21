@@ -1,11 +1,24 @@
-Stickers
-- Usar un sticker: `s <nombre_sticker>`
-- Añadir sticker: Seleccionar una imagen y escribir `fur add <nombre_sticker>` en la caja de comentario
-- Ver stickers disponibles: `fur list`
-- Llamar puto a Asriel: `fur aputo`
+```css
+.Categoria de comandos [FurBot] (Fur [comando])
 
-Memes
-- `fur trauma @<usuario>`
-- `fur horny @<usuario>`
-- `fur patada @<usuario>`
-- `fur cringe @<usuario>`
+ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+-aputo = se designa un insulto a Asriel   
+-cputo = Se designa un insulto a Cracker   
+-cringe = pone tu foto y te dije cringe :v
+-help = Se designa este mensaje en pantalla
+-horny =  Creates a horny meme with the user photo
+-info = una movida rara. Habla con Teko xd    
+-patada = Se desigan una imagen tuya y una patada
+ 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+.Categoria de Stickers (s [nombre-sticker])       
+
+-tputo = Se designa para decirle un insulto a Thedax   
+-trauma = Asigna un trauma a tu foto de perfil
+ 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Para toda esta ayuda, solo debes escribir el comando [fur help] o [fur info]. Si algo no va bien, @Teko o dm 
+```
