@@ -37,7 +37,10 @@ class memes(commands.Cog):
         """
 
         # Get user avatar
-        avatarUrl=user.avatar_url
+        if user==None:
+            avatarUrl=context.author.avatar_url
+        else:
+            avatarUrl=user.avatar_url
         var="wget -O %s%s %s"%(memePath, "01.webp", avatarUrl)
         os.system(var)
         memes.convertPic(memePath+"01.webp","01",670)
@@ -69,7 +72,10 @@ class memes(commands.Cog):
         """
 
         # Get user avatar
-        avatarUrl=user.avatar_url
+        if user==None:
+            avatarUrl=context.author.avatar_url
+        else:
+            avatarUrl=user.avatar_url
         var="wget -O %s%s %s"%(memePath, "01.webp", avatarUrl)
         os.system(var)
         memes.convertPic(memePath+"01.webp","01",300)
@@ -100,7 +106,10 @@ class memes(commands.Cog):
         """
 
         # Get user avatar
-        avatarUrl=user.avatar_url
+        if user==None:
+            avatarUrl=context.author.avatar_url
+        else:
+            avatarUrl=user.avatar_url
         print(avatarUrl)
         var="wget -O %s%s %s"%(memePath, "01.webp", avatarUrl)
         os.system(var)
@@ -135,7 +144,10 @@ class memes(commands.Cog):
         """
 
         # Get user avatar
-        avatarUrl=user.avatar_url
+        if user==None:
+            avatarUrl=context.author.avatar_url
+        else:
+            avatarUrl=user.avatar_url
         var="wget -O %s%s %s"%(memePath, "01.webp", avatarUrl)
         os.system(var)
         memes.convertPic(memePath+"01.webp","01",170)
@@ -154,6 +166,41 @@ class memes(commands.Cog):
 
         # Delete user avatar and output
         sleep(1)
+        os.system("rm "+memePath+"01.webp")
+        os.system("rm "+memePath+"output.png")
+        os.system("rm "+memePath+"01.png")
+
+
+    @commands.command()
+    async def españa(self, context, *, user : discord.Member=None):
+        """Arriba España!!!
+            
+            Uso: fur españa "@<usuario>
+        """
+
+        # Get user avatar
+        if user==None:
+            avatarUrl=context.author.avatar_url
+        else:
+            avatarUrl=user.avatar_url
+        var="wget -O %s%s %s"%(memePath, "01.webp", avatarUrl)
+        os.system(var)
+        memes.convertPic(memePath+"01.webp","01",650)
+
+        # Open images
+        background = Image.open(memePath+"01.png").convert("RGBA")
+        width, height = background.size
+        output=Image.new("RGBA",(width,height))
+        img = Image.open(memePath+"españa.png").convert("RGBA")
+        output.paste(background, (0,0), background)
+        output.paste(img, (0,0), img)
+        output.save(memePath+"output.png","PNG")
+
+        # Send meme
+        await context.channel.send(file=discord.File(memePath+"output.png"))
+
+        # Delete user avatar and output
+        #sleep(1)
         os.system("rm "+memePath+"01.webp")
         os.system("rm "+memePath+"output.png")
         os.system("rm "+memePath+"01.png")

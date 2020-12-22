@@ -1,3 +1,4 @@
+from asyncio.tasks import sleep
 import discord
 from discord.ext import commands
 import random
@@ -46,10 +47,15 @@ class fun(commands.Cog):
 
     @commands.command()
     async def ball(self, context, *, user : discord.Member=None):
-        tmp=        await context.channel.send( 'Now Playing:                  ')
-        tmp =         await context.channel.send( 'o                  ')
-        tmp='uwu'
-        await context.edit(content=tmp)
+        tmp =         await context.channel.send( '.')
+
+        for x in range(20):
+            
+            await tmp.edit(content='   .')
+            await asyncio.sleep(.3)
+            await tmp.edit(content='.')
+            await asyncio.sleep(.3)
+        
 
 
 def setup(bot):
