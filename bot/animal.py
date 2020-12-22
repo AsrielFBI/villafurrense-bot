@@ -3,9 +3,9 @@ from discord.ext import commands
 import random
 import praw
 
-reddit = praw.Reddit(client_id='CLIENT_ID HERE',
-                     client_secret='CLIENT_SECRET HERE',
-                     user_agent='USER_AGENT HERE')
+reddit = praw.Reddit(client_id='pK48pKmt7MTGtA',
+                     client_secret='UrsuDb6JQqyrppNb1KA0ezTX5SqDrA',
+                     user_agent='prawuwu')
 
 
 class animal(commands.Cog):
@@ -14,17 +14,17 @@ class animal(commands.Cog):
 
 
     @commands.command()
-    async def penis(self, context, *, user : discord.Member=None):
-        """Buena tula
+    async def fox(self, context, *, user : discord.Member=None):
+        """Fotos de zorros hermosos -/////-
 
-            Genera un pene de tamaño aleatorio
+            Envia una foto de r/foxes
         """
-        num=random.randint(1,10)
-        output='8'
-        for x in range(num):
-            output+='='
-        output+='D'
-        await context.channel.send(output)
+        memes_submissions = reddit.subreddit('foxes').search('flair:"Pics!"') # Gets a random images from r/foxes with flair Pics!
+        post_to_pick = random.randint(1, 10)
+        for i in range(0, post_to_pick):
+            submission = next(x for x in memes_submissions if not x.stickied)
+
+        await context.channel.send(submission.url)
 
 
 
