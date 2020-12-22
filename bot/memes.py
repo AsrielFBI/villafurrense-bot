@@ -3,6 +3,7 @@ import discord
 from discord.ext import commands
 from PIL import Image
 import os
+import ffmpeg
 
 
 
@@ -196,14 +197,19 @@ class memes(commands.Cog):
         output.paste(img, (0,0), img)
         output.save(memePath+"output.png","PNG")
 
+        # Create video
+        var='ffmpeg -loop 1 -i {}output.png -i {}españa.mp3 -filter:v scale=300:-1 -c:v libx264 -framerate 1 -tune stillimage -c:a aac -b:a 192k -pix_fmt yuv420p -shortest {}output.mp4'
+        os.system(var.format(memePath,memePath,memePath))
+        
         # Send meme
-        await context.channel.send(file=discord.File(memePath+"output.png"))
+        await context.channel.send(file=discord.File(memePath+"output.mp4"))
 
         # Delete user avatar and output
         #sleep(1)
         os.system("rm "+memePath+"01.webp")
         os.system("rm "+memePath+"output.png")
         os.system("rm "+memePath+"01.png")
+        os.system("rm "+memePath+"output.mp4")
 
 def setup(bot):
     bot.add_cog(memes(bot))
