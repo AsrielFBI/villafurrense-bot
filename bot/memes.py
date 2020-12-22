@@ -211,5 +211,41 @@ class memes(commands.Cog):
         os.system("rm "+memePath+"01.png")
         os.system("rm "+memePath+"output.mp4")
 
+
+
+    @commands.command()
+    async def burn(self, context, *, user : discord.Member=None):
+        """Quema a tus amigos :)
+            
+            Uso: fur burn "@<usuario>
+        """
+
+        # Get user avatar
+        if user==None:
+            avatarUrl=context.author.avatar_url
+        else:
+            avatarUrl=user.avatar_url
+        var="wget -O %s%s %s"%(memePath, "01.webp", avatarUrl)
+        os.system(var)
+        memes.convertPic(memePath+"01.webp","01",300)
+
+        # Open images
+        background = Image.open(memePath+"01.png").convert("RGBA")
+        width, height = background.size
+        output=Image.new("RGBA",(width,height))
+        img = Image.open(memePath+"burn.png").convert("RGBA")
+        output.paste(background, (0,0), background)
+        output.paste(img, (0,0), img)
+        output.save(memePath+"output.png","PNG")
+
+        # Send meme
+        await context.channel.send(file=discord.File(memePath+"output.png"))
+
+        # Delete user avatar and output
+        sleep(1)
+        os.system("rm "+memePath+"01.webp")
+        os.system("rm "+memePath+"output.png")
+        os.system("rm "+memePath+"01.png")
+
 def setup(bot):
     bot.add_cog(memes(bot))
