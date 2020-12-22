@@ -72,6 +72,8 @@ async def on_message(message):
         await message.channel.send(':eyes:')
     if message.content.lower()==('ewe'):
         await message.channel.send('EwE!')
+    if message.content.lower()==('awa'):
+        await message.channel.send('AwA!')
 
     if message.type==0:
         await message.channel.send('dfsdafsdfaf!')
