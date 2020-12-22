@@ -37,6 +37,10 @@ class roast(commands.Cog):
 
             Genera un insulto aleatorio
         """
+        if user==None:
+            usuario=context.author.mention
+        else:
+            usuario=user.mention
         insults=['eres tan fe@ que cuando enviaste tu foto por email la detectó el antivirus']
         insults.append('eres tan fe@ que al nacer el medico dijo: Si no llora es un tumor')
         insults.append('eres tan fe@ que cuando naciste te metieron en una incubadora con cristales tintados')
@@ -47,7 +51,7 @@ class roast(commands.Cog):
         insults.append('das tanto asco que para Alex eres infumable')
         insults.append('eres tan feo que ni los nazis irían a invadirte tu casa')
         output='{} %s '%(random.choice(insults))
-        await context.channel.send(output.format(user.mention))
+        await context.channel.send(output.format(usuario))
 
 def setup(bot):
     bot.add_cog(roast(bot))
