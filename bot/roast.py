@@ -37,6 +37,7 @@ class roast(commands.Cog):
         insults.append('tu madre era tan gorda que si se ponía un traje amarillo le gritaban taxi')
         insults.append('eres tan torpe que cuando te caíste de la cuna, ya tenías síndrome de down')
         insults.append('eres tan inútil que thedax se volvería independentista solo por no vivir en el mismo país que tú')
+        insults.append('das tanto asco que ni los coches bomba de ETA explotarían contigo dentro')
         output='{} %s '%(random.choice(insults))
         await context.channel.send(output.format(user.mention))
 

@@ -5,9 +5,12 @@ import os
 
 
 
+if os.path.isfile('../memes'):
+    memePath='../memes/'
+else:
+    memePath='/app/memes/'
 
-#memePath='/app/memes/'
-memePath='../memes/'
+    
 class memes(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
