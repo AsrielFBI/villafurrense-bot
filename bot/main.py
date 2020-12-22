@@ -1,8 +1,9 @@
 import discord
 import os
+
+from discord.message import Message
+
 import stickers
-import random
-import memes
 from discord.ext import commands
 from PIL import Image
 
@@ -16,7 +17,7 @@ bot.remove_command('trauma')
 
 commandActivator='fur '
 stickerActivator='s '
-statusVar=discord.Status.online
+statusVar=discord.Status.do_not_disturb
 
 #helptxt='/app/bot/help.txt'
 helptxt='help.txt'
@@ -36,11 +37,17 @@ async def version(context):
 
 @bot.command(name='info')
 async def help(context):
+    """Muestra la info de Zaffy
+    """
     f = open(helptxt, 'r')
     general=f.read()
     await context.channel.send(general)
     f.close()
 
+
+@bot.command(name='reply')
+async def reply(context ):
+    print(context.message_reference)
 
 
 
@@ -65,6 +72,22 @@ async def on_message(message):
         await message.channel.send(':eyes:')
     if message.content.lower()==('ewe'):
         await message.channel.send('EwE!')
+
+    if message.type==0:
+        await message.channel.send('dfsdafsdfaf!')
+
+
+    if message.content=='mantenimiento':
+        game = discord.Game("En manetenimiento")
+        await bot.change_presence(status=discord.Status.do_not_disturb, activity=game)
+
+
+    if message.content.startswith('!hello'):
+        print(message.reference)
+        await message.reply('Hello!', mention_author=True)
+
+    
+
     
 
     if "yiff" in message.content:
@@ -86,7 +109,7 @@ async def on_message(message):
     await bot.process_commands(message)
 
 
-extensions=['roast', 'memes']
+extensions=['roast', 'memes', 'fun']
 for extension in extensions:
     bot.load_extension(extension)
 

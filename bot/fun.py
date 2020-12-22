@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 import random
+import asyncio
 
 
 class fun(commands.Cog):
@@ -30,6 +31,25 @@ class fun(commands.Cog):
         output+='D'
         await context.channel.send(output.format(usuario))
 
+
+    @commands.command()
+    async def communist(self, context, *, user : discord.Member=None):
+        """Serás un comunista bolivariano que apoya al Coletas?
+        """
+        num=random.randint(0,100)
+        output='{} es {}% comunista'
+        if user==None:
+            usuario=context.author.mention
+        else:
+            usuario=user.mention
+        await context.channel.send(output.format(usuario, num))
+
+    @commands.command()
+    async def ball(self, context, *, user : discord.Member=None):
+        tmp=        await context.channel.send( 'Now Playing:                  ')
+        tmp =         await context.channel.send( 'o                  ')
+        tmp='uwu'
+        await context.edit(content=tmp)
 
 
 def setup(bot):

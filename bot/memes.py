@@ -1,3 +1,4 @@
+from asyncio.tasks import sleep
 import discord
 from discord.ext import commands
 from PIL import Image
@@ -5,10 +6,10 @@ import os
 
 
 
-if os.path.isfile('../memes'):
-    memePath='../memes/'
-else:
-    memePath='/app/memes/'
+
+memePath='../memes/'
+
+#memePath='/app/memes/'
 
     
 class memes(commands.Cog):
@@ -54,6 +55,7 @@ class memes(commands.Cog):
         await context.channel.send(file=discord.File(memePath+"output.png"))
 
         # Delete user avatar and output
+        sleep(1)
         os.system("rm "+memePath+"01.webp")
         os.system("rm "+memePath+"output.png")
         os.system("rm "+memePath+"01.png")
@@ -85,6 +87,7 @@ class memes(commands.Cog):
         await context.channel.send(file=discord.File(memePath+"output.png"))
 
         # Delete user avatar and output
+        sleep(1)
         os.system("rm "+memePath+"01.webp")
         os.system("rm "+memePath+"output.png")
         os.system("rm "+memePath+"01.png")
@@ -98,6 +101,7 @@ class memes(commands.Cog):
 
         # Get user avatar
         avatarUrl=user.avatar_url
+        print(avatarUrl)
         var="wget -O %s%s %s"%(memePath, "01.webp", avatarUrl)
         os.system(var)
         memes.convertPic(memePath+"01.webp","01",110)
@@ -117,6 +121,7 @@ class memes(commands.Cog):
         await context.channel.send(file=discord.File(memePath+"output.png"))
 
         # Delete user avatar and output
+        sleep(1)
         os.system("rm "+memePath+"01.webp")
         os.system("rm "+memePath+"output.png")
         os.system("rm "+memePath+"01.png")
@@ -148,6 +153,7 @@ class memes(commands.Cog):
         await context.channel.send(file=discord.File(memePath+"output.png"))
 
         # Delete user avatar and output
+        sleep(1)
         os.system("rm "+memePath+"01.webp")
         os.system("rm "+memePath+"output.png")
         os.system("rm "+memePath+"01.png")
