@@ -6,8 +6,8 @@ from PIL import Image
 # Variables
 client = discord.Client()
 
-stickersPath='../stickers/'
-#stickersPath='/app/stickers/'
+#stickersPath='../stickers/'
+stickersPath='/app/stickers/'
     
 stickerSize=500
 

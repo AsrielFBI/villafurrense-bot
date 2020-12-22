@@ -8,9 +8,9 @@ import ffmpeg
 
 
 
-memePath='../memes/'
+#memePath='../memes/'
 
-#memePath='/app/memes/'
+memePath='/app/memes/'
 
     
 class memes(commands.Cog):
