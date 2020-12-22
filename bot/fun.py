@@ -46,6 +46,19 @@ class fun(commands.Cog):
         await context.channel.send(output.format(usuario, num))
 
     @commands.command()
+    async def capitalist(self, context, *, user : discord.Member=None):
+        """Serás capitalista y te convertirás en el nuevo lobo de Wall Street?
+        """
+        num=random.randint(0,100)
+        output='{} es {}% capitalista'
+        if user==None:
+            usuario=context.author.mention
+        else:
+            usuario=user.mention
+        await context.channel.send(output.format(usuario, num))
+
+
+    @commands.command()
     async def ball(self, context, *, user : discord.Member=None):
         tmp =         await context.channel.send( '.')
 
