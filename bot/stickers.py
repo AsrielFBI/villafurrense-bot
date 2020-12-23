@@ -13,39 +13,39 @@ stickerSize=500
 
 
  
-@client.event
-async def addSticker(message):
-    """ Downloads a sticker and converts it to png if it is other format
-
-    Args:
-        message: contains the sticker to add
-    """
-    stickerName=message.content.split()[-1]
-    print(stickerName)
-    stickerExtension=message.content.split(".")[-1]
-    if checkSticker(stickerName, stickerExtension)==0:
-        await message.channel.send("El nombre de sticker ya existe")
-        return
-    if checkSticker(stickerName, stickerExtension)==1:
-        await message.channel.send("El tipo de archivo no es válido")
-        return
-    
-    if stickerExtension=='jpg':
-        stickerFileName=stickerName+".jpg"
-    else:
-        stickerFileName=stickerName+".png"
-
-    stickerUrl=message.attachments[0].url
-    var="wget -O %s%s %s"%(stickersPath, stickerFileName, stickerUrl)
-    stickerPath="%s%s"%(stickersPath ,stickerFileName)
-    os.system(var)
-    convertPic(stickerPath, stickerName)
-
-    
-    if stickerExtension=='jpg':
-        var2="rm "+stickerPath
-        os.system(var2)
-    await message.channel.send("Sticker "+stickerName+" añadido")
+#@client.event
+#async def addSticker(message):
+#    """ Downloads a sticker and converts it to png if it is other format
+#
+#    Args:
+#        message: contains the sticker to add
+#    """
+#    stickerName=message.content.split()[-1]
+#    print(stickerName)
+#    stickerExtension=message.content.split(".")[-1]
+#    if checkSticker(stickerName, stickerExtension)==0:
+#        await message.channel.send("El nombre de sticker ya existe")
+#        return
+#    if checkSticker(stickerName, stickerExtension)==1:
+#        await message.channel.send("El tipo de archivo no es válido")
+#        return
+#    
+#    if stickerExtension=='jpg':
+#        stickerFileName=stickerName+".jpg"
+#    else:
+#        stickerFileName=stickerName+".png"
+#
+#    stickerUrl=message.attachments[0].url
+#    var="wget -O %s%s %s"%(stickersPath, stickerFileName, stickerUrl)
+#    stickerPath="%s%s"%(stickersPath ,stickerFileName)
+#    os.system(var)
+#    convertPic(stickerPath, stickerName)
+#
+#    
+#    if stickerExtension=='jpg':
+#        var2="rm "+stickerPath
+#        os.system(var2)
+#    await message.channel.send("Sticker "+stickerName+" añadido")
 
 
 
