@@ -1,9 +1,9 @@
 from asyncio.tasks import sleep
 import discord
 from discord.ext import commands
-from PIL import Image
+from PIL import Image, ImageFont, ImageDraw
 import os
-import ffmpeg
+
 
 if os.path.isdir('../memes/') :
     memePath='../memes/'
@@ -27,7 +27,7 @@ class memes(commands.Cog):
         """
 
         # Get user avatar
-        avatarUrl=getAvatarUrl(context,user)
+        avatarUrl=getUser(context,user).avatar_url
 
         # Create meme
         createMeme(('trauma','01'),avatarUrl,670,(0,0,39,400),True)
@@ -48,7 +48,7 @@ class memes(commands.Cog):
         """
 
         # Get user avatar
-        avatarUrl=getAvatarUrl(context,user)
+        avatarUrl=getUser(context,user).avatar_url
         
         # Create meme
         createMeme(('horny','01'),avatarUrl,300,(0,0,410,180),True)
@@ -70,7 +70,7 @@ class memes(commands.Cog):
         """
 
         # Get user avatar
-        avatarUrl=getAvatarUrl(context,user)
+        avatarUrl=getUser(context,user).avatar_url
         
         # Create meme
         createMeme(("patada","01","01"),avatarUrl,110,(0,0,198,229,348,915),True)
@@ -92,7 +92,7 @@ class memes(commands.Cog):
         """
 
         # Get user avatar
-        avatarUrl=getAvatarUrl(context,user)
+        avatarUrl=getUser(context,user).avatar_url
 
         # Create meme
         createMeme(('cringe','01'),avatarUrl,170,(0,0,370,20),True)
@@ -114,7 +114,7 @@ class memes(commands.Cog):
         """
 
         # Get user avatar
-        avatarUrl=getAvatarUrl(context,user)
+        avatarUrl=getUser(context,user).avatar_url
 
         # Create meme
         createMeme(("españa",'01'),avatarUrl,650,(0,0,0,0),False)
@@ -141,7 +141,7 @@ class memes(commands.Cog):
         """
 
         # Get user avatar
-        avatarUrl=getAvatarUrl(context,user)
+        avatarUrl=getUser(context,user).avatar_url
 
         #createMeme('01', '01','burn',avatar_url=avatarUrl, avatar_size=300, position=(0,0,0,0))
         createMeme(('burn','01'),avatarUrl,300,(0,0,0,0),False)
@@ -162,7 +162,7 @@ class memes(commands.Cog):
         """
 
         # Get user avatar
-        avatarUrl=getAvatarUrl(context,user)
+        avatarUrl=getUser(context,user).avatar_url
 
         # Create meme
         createMeme(("betis",'01'),avatarUrl,400,(-100,0,0,0),False)
@@ -177,6 +177,33 @@ class memes(commands.Cog):
         # Delete user avatar and output
         await sleep(1)
         deleteRequirements(('01.webp', 'output.png', '01.png','output.mp4'))
+        
+
+
+
+    #@commands.command()
+    #async def smash(self, context, *, user : discord.Member=None):
+    #    avatarUrl=getUser(context,user).avatar_url
+    #    var="wget -O %s%s %s"%(memePath, "01.webp", avatarUrl)
+    #    os.system(var)
+#
+    #    output= Image.open(memePath+'smash'+'.png').convert("RGBA")
+#
+    #    # Text
+    #    txtImage = Image.new("L", (100, 100), 255)
+    #    title_font = ImageFont.truetype(memePath+'smash.ttf', 35)
+    #    text = "Yiffs into the figth"
+    #    name=str(getUser(context,user))[:-5]  # remove #1234
+    #    image_editable = ImageDraw.Draw(txtImage)
+    #    image_editable.text((460,132), text, (237, 230, 211), font=title_font)
+    #    image_editable.text((460,102), name, (237, 230, 211), font=title_font)
+#
+    #    #img=Image.open(memePath+'01.png').convert("RGBA")
+#
+    #    output.save(memePath+"output.png","PNG")
+    #    await context.channel.send(file=discord.File(memePath+"output.png"))
+
+
 
 
 
@@ -241,20 +268,20 @@ def convertPic(picture : str, imgName : str, imgSize : str):
     img.save(memePath+imgName+'.png')
 
 
-def getAvatarUrl(context, user : discord.Member=None):
-    """Gets user avatar Url from a message
+def getUser(context, user : discord.Member=None):
+    """Gets user from a message
 
     Args:
         context ([Message]): [Message to get an avatar]
         user (discord.Member, optional): [User of a message]. Defaults to None.
 
     Returns:
-        [str]: [url avatar]
+        [str]: [user]
     """
     if user==None:
-            avatarUrl=context.author.avatar_url
+            avatarUrl=context.author
     else:
-            avatarUrl=user.avatar_url
+            avatarUrl=user
 
     return avatarUrl
     
