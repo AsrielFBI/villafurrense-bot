@@ -20,8 +20,8 @@ stickerActivator='s '
 statusVar=discord.Status.do_not_disturb
 
 #helptxt='/app/bot/help.txt'
-helptxt='help.txt'
-#stickersPath='/app/stickers/'
+#helptxt='help.txt'
+stickersPath='/app/stickers/'
 stickersPath='../stickers/'
 
 
