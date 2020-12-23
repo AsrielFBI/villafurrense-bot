@@ -5,20 +5,20 @@ from PIL import Image
 import os
 import ffmpeg
 
+if os.path.isdir('../memes/') :
+    memePath='../memes/'
+else:
+    memePath='/app/memes/'
 
 
 
-memePath='../memes/'
-
+#memePath='../memes/'
 #memePath='/app/memes/'
 
     
 class memes(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-
-
-
 
 
     @commands.command()
@@ -193,7 +193,7 @@ class memes(commands.Cog):
         await context.channel.send(file=discord.File(memePath+"output.png"))
 
         # Delete user avatar and output
-        sleep(1)
+        await sleep(1)
         os.system("rm "+memePath+"01.webp")
         os.system("rm "+memePath+"output.png")
         os.system("rm "+memePath+"01.png")
@@ -220,7 +220,7 @@ class memes(commands.Cog):
         await context.channel.send(file=discord.File(memePath+"output.mp4"))
 
         # Delete user avatar and output
-        #await sleep(1)
+        await sleep(1)
         os.system("rm "+memePath+"01.webp")
         os.system("rm "+memePath+"output.png")
         os.system("rm "+memePath+"01.png")

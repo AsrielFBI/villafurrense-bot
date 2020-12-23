@@ -4,8 +4,14 @@ import os
 from PIL import Image
 from discord.ext.commands.core import command
 
+
+if os.path.isdir('../stickers/') :
+    stickersPath='../stickers/'
+else:
+    stickersPath='/app/stickers/'
+
 stickerSize=500
-stickersPath='../stickers/'
+#stickersPath='../stickers/'
 #stickersPath='/app/stickers/'
 
 
@@ -56,7 +62,6 @@ class stickers(commands.Cog):
         await context.channel.send(str)
 
 
-
     @commands.command(name='s')
     async def useSticker(self, context,sticker):
         """ Usar un sticker
@@ -81,6 +86,7 @@ def convertPic(picture, stickerName):
     img.save(stickersPath+stickerName+'.png')
 
 
+
 def checkSticker(stickerName, stickerExtension):
     """[summary]
 
@@ -99,8 +105,6 @@ def checkSticker(stickerName, stickerExtension):
         return 0
     if stickerExtension in ['jpg', 'png']:
         return 1
-
-
 
 
 
