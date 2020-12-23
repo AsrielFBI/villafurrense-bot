@@ -11,10 +11,6 @@ else:
     memePath='/app/memes/'
 
 
-
-#memePath='../memes/'
-#memePath='/app/memes/'
-
     
 class memes(commands.Cog):
     def __init__(self, bot):
@@ -28,36 +24,19 @@ class memes(commands.Cog):
 
             Uso: fur trauma "@<usuario>
         """
+
         # Get user avatar
-        avatarUrl=getAvatarUrl(user,context)
+        avatarUrl=getAvatarUrl(context,user)
 
-
-        #createMeme('01','trauma','trauma',avatarUrl,670,(39,400,0,0))
+        # Create meme
         createMeme(('trauma','01'),avatarUrl,670,(0,0,39,400),True)
 
-
-
-        #var="wget -O %s%s %s"%(memePath, "01.webp", avatarUrl)
-        #os.system(var)
-        #memes.convertPic(memePath+"01.webp","01",670)
-#
-        ## Open images
-        #background = Image.open(memePath+"trauma.png").convert("RGBA")
-        #width, height = background.size
-        #output=Image.new("RGBA",(width,height))
-        #img = Image.open(memePath+"01.png").convert("RGBA")
-        #output.paste(img, (39,400), img)
-        #output.paste(background, (0,0), background)
-        #output.save(memePath+"output.png","PNG")
-#
         # Send meme
         await context.channel.send(file=discord.File(memePath+"output.png"))
 
         # Delete user avatar and output
         await sleep(1)
-        os.system("rm "+memePath+"01.webp")
-        os.system("rm "+memePath+"output.png")
-        os.system("rm "+memePath+"01.png")
+        deleteRequirements(('01.webp','output.png','01.png'))
 
 
     @commands.command()
@@ -68,21 +47,19 @@ class memes(commands.Cog):
         """
 
         # Get user avatar
-        avatarUrl=getAvatarUrl(user,context)
+        avatarUrl=getAvatarUrl(context,user)
         
-
-
+        # Create meme
         createMeme(('horny','01'),avatarUrl,300,(0,0,410,180),True)
-
 
         # Send meme
         await context.channel.send(file=discord.File(memePath+"output.png"))
 
         # Delete user avatar and output
         await sleep(1)
-        os.system("rm "+memePath+"01.webp")
-        os.system("rm "+memePath+"output.png")
-        os.system("rm "+memePath+"01.png")
+        deleteRequirements(('01.webp','output.png','01.png'))
+
+
 
     @commands.command()
     async def patada(self, context, *, user : discord.Member=None):
@@ -92,34 +69,18 @@ class memes(commands.Cog):
         """
 
         # Get user avatar
-        avatarUrl=getAvatarUrl(user,context)
+        avatarUrl=getAvatarUrl(context,user)
         
-
+        # Create meme
         createMeme(("patada","01","01"),avatarUrl,110,(0,0,198,229,348,915),True)
-
-        #var="wget -O %s%s %s"%(memePath, "01.webp", avatarUrl)
-        #os.system(var)
-        #memes.convertPic(memePath+"01.webp","01",110)
-#
-        ## Open images
-        #background = Image.open(memePath+"patada.png").convert("RGBA")
-        #width, height = background.size
-        #output=Image.new("RGBA",(width,height))
-        #img = Image.open(memePath+"01.png").convert("RGBA")
-        #output.paste(img, (198,229), img)
-        #img.thumbnail((90, 90), Image.ANTIALIAS)
-        #output.paste(img, (348,915), img)
-        #output.paste(background, (0,0), background)
-        #output.save(memePath+"output.png","PNG")
 
         # Send meme
         await context.channel.send(file=discord.File(memePath+"output.png"))
 
         # Delete user avatar and output
         await sleep(1)
-        os.system("rm "+memePath+"01.webp")
-        os.system("rm "+memePath+"output.png")
-        os.system("rm "+memePath+"01.png")
+        deleteRequirements(('01.webp','output.png','01.png'))
+
 
 
     @commands.command()
@@ -130,20 +91,18 @@ class memes(commands.Cog):
         """
 
         # Get user avatar
-        avatarUrl=getAvatarUrl(user,context)
+        avatarUrl=getAvatarUrl(context,user)
 
-        
+        # Create meme
         createMeme(('cringe','01'),avatarUrl,170,(0,0,370,20),True)
-
 
         # Send meme
         await context.channel.send(file=discord.File(memePath+"output.png"))
 
         # Delete user avatar and output
         await sleep(1)
-        os.system("rm "+memePath+"01.webp")
-        os.system("rm "+memePath+"output.png")
-        os.system("rm "+memePath+"01.png")
+        deleteRequirements(('01.webp','output.png','01.png'))
+        
 
 
     @commands.command()
@@ -154,9 +113,9 @@ class memes(commands.Cog):
         """
 
         # Get user avatar
-        avatarUrl=getAvatarUrl(user,context)
+        avatarUrl=getAvatarUrl(context,user)
 
-
+        # Create meme
         createMeme(("españa",'01'),avatarUrl,650,(0,0,0,0),False)
 
         # Create video
@@ -167,12 +126,9 @@ class memes(commands.Cog):
         await context.channel.send(file=discord.File(memePath+"output.mp4"))
 
         # Delete user avatar and output
-        #await sleep(1)
-        os.system("rm "+memePath+"01.webp")
-        os.system("rm "+memePath+"output.png")
-        os.system("rm "+memePath+"01.png")
-        os.system("rm "+memePath+"output.mp4")
-
+        await sleep(1)
+        deleteRequirements(('01.webp','output.png','01.png','output.mp4'))
+        
 
 
     @commands.command()
@@ -184,7 +140,7 @@ class memes(commands.Cog):
         """
 
         # Get user avatar
-        avatarUrl=getAvatarUrl(user,context)
+        avatarUrl=getAvatarUrl(context,user)
 
         #createMeme('01', '01','burn',avatar_url=avatarUrl, avatar_size=300, position=(0,0,0,0))
         createMeme(('burn','01'),avatarUrl,300,(0,0,0,0),False)
@@ -194,10 +150,8 @@ class memes(commands.Cog):
 
         # Delete user avatar and output
         await sleep(1)
-        os.system("rm "+memePath+"01.webp")
-        os.system("rm "+memePath+"output.png")
-        os.system("rm "+memePath+"01.png")
-
+        deleteRequirements(('01.webp','output.png','01.png'))
+        
 
 
     @commands.command()
@@ -207,9 +161,9 @@ class memes(commands.Cog):
         """
 
         # Get user avatar
-        avatarUrl=getAvatarUrl(user,context)
+        avatarUrl=getAvatarUrl(context,user)
 
-
+        # Create meme
         createMeme(("betis",'01'),avatarUrl,400,(-100,0,0,0),False)
 
         # Create video
@@ -221,12 +175,7 @@ class memes(commands.Cog):
 
         # Delete user avatar and output
         await sleep(1)
-        os.system("rm "+memePath+"01.webp")
-        os.system("rm "+memePath+"output.png")
-        os.system("rm "+memePath+"01.png")
-        os.system("rm "+memePath+"output.mp4")
-
-
+        deleteRequirements(('01.webp', 'output.png', '01.png','output.mp4'))
 
 
 
@@ -274,7 +223,14 @@ def createMeme(pictures : list, avatar_url : str, avatar_size : int, position : 
 
 
 
-def convertPic(picture, imgName, imgSize):
+def convertPic(picture : str, imgName : str, imgSize : str):
+    """Converts an image to PNG with a differents size
+
+    Args:
+        picture (str): picture to convert
+        imgName (str): exported picture name
+        imgSize (str): exported image size
+    """
     img = Image.open(picture)
 
     wpercent = (imgSize/float(img.size[0]))
@@ -284,10 +240,15 @@ def convertPic(picture, imgName, imgSize):
     img.save(memePath+imgName+'.png')
 
 
+def getAvatarUrl(context, user : discord.Member=None):
+    """Gets user avatar Url from a message
 
-def getAvatarUrl(user, context):
-    """
-    docstring
+    Args:
+        context ([Message]): [Message to get an avatar]
+        user (discord.Member, optional): [User of a message]. Defaults to None.
+
+    Returns:
+        [str]: [url avatar]
     """
     if user==None:
             avatarUrl=context.author.avatar_url
@@ -296,6 +257,15 @@ def getAvatarUrl(user, context):
 
     return avatarUrl
     
+
+def deleteRequirements(elements : list):
+    """ Delete files needed to create a meme
+
+    Args:
+        elements (list): [files used in a meme]
+    """
+    for x in elements:
+        os.system("rm "+memePath+x)
 
 
 def setup(bot):

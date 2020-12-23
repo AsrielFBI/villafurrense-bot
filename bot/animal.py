@@ -44,6 +44,7 @@ class animal(commands.Cog):
         """
         await context.channel.send(getRedditImage('fish','Pic', None))
 
+
     @commands.command()
     async def reptiles(self, context):
         """Fotos de lagartos y reptiles
@@ -56,6 +57,16 @@ class animal(commands.Cog):
 
 
 def getRedditImage(Subreddit : str,Flair : str ,Filter : str):
+    """Gets a random Reddit image
+
+    Args:
+        Subreddit (str): [subreddit to get the photo from]
+        Flair (str): [flair to filter by]
+        Filter (str): [filter to search by]
+
+    Returns:
+        [str]: [url from a reddit image]
+    """
     if Flair==None:
         memes_submissions = reddit.subreddit(Subreddit).search(Filter) # Gets a random images from r/foxes with flair Pics!
     else:

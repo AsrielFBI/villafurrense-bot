@@ -11,8 +11,6 @@ else:
     stickersPath='/app/stickers/'
 
 stickerSize=500
-#stickersPath='../stickers/'
-#stickersPath='/app/stickers/'
 
 
 class stickers(commands.Cog):
@@ -26,8 +24,9 @@ class stickers(commands.Cog):
              Uso: seleccionar una imagen y en el cuadro de "añadir comentario"
              poner fur add <nombre_sticker>
         """
+
+        # Checks if a picture is correct
         stickerExtension=context.message.attachments[0].url.split(".")[-1]
-        print(stickerExtension)
         if checkSticker(arg1, stickerExtension)==0:
             await context.channel.send("El nombre de sticker ya existe")
             return
@@ -76,27 +75,32 @@ class stickers(commands.Cog):
 
 
 # Resize and image and save it as png
-def convertPic(picture, stickerName):
-    img = Image.open(picture)
+def convertPic(picture : str, stickerName : str):
+    """Converts a picture to a sticker
 
+    Args:
+        picture (str): [picture to convert]
+        stickerName (str): [name of the sticker to be created]
+    """
+
+    img = Image.open(picture)
     wpercent = (stickerSize/float(img.size[0]))
     hsize = int((float(img.size[1])*float(wpercent)))
     img = img.resize((stickerSize,hsize), Image.ANTIALIAS)
-
     img.save(stickersPath+stickerName+'.png')
 
 
 
-def checkSticker(stickerName, stickerExtension):
-    """[summary]
+def checkSticker(stickerName : str, stickerExtension : str):
+    """ checks if a sticker already exists and if file extension is correct
 
     Args:
-        stickerName ([String]): [description]
-        stickerExtension ([String]): [description]
+        stickerName ([String]): [Name of sticker to add]
+        stickerExtension ([String]): [Extension of sticker to add]
 
     Returns:
         [0]: [name used by other sticker]
-        [1]: [if file extension is correct]
+        [1]: [if file extension is correct, must be jpg or png]
     """
     str=os.listdir(stickersPath)
     str[:] = [s.replace('.png', '') for s in str]
