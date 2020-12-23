@@ -6,6 +6,7 @@ import asyncio
 
 
 class fun(commands.Cog):
+    """Cosas random y divertidas"""
     def __init__(self, bot):
         self.bot = bot
 

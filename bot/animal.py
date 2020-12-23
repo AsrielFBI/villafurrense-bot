@@ -9,6 +9,7 @@ reddit = praw.Reddit(client_id='pK48pKmt7MTGtA',
 
 
 class animal(commands.Cog):
+    """Fotos de animalitos """
     def __init__(self, bot):
         self.bot = bot
 

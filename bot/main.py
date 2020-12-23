@@ -89,7 +89,7 @@ async def on_message(message):
     await bot.process_commands(message)
 
 # Add extensions
-extensions=['roast', 'memes', 'fun', 'animal', 'stickers']
+extensions=['roast', 'memes', 'fun', 'animal', 'stickers', 'utilities']
 for extension in extensions:
     bot.load_extension(extension)
 

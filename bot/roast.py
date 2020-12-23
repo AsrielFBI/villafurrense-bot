@@ -3,6 +3,7 @@ import random
 from discord.ext import commands
 
 class roast(commands.Cog):
+    """Insultos varios """
     def __init__(self, bot):
         self.bot = bot
 

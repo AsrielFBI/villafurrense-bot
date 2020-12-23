@@ -14,6 +14,7 @@ stickerSize=500
 
 
 class stickers(commands.Cog):
+    """Discord es una kk y no tiene stickers pero yo si :)"""
     def __init__(self, bot):
         self.bot = bot
 

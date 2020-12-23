@@ -13,6 +13,7 @@ else:
 
     
 class memes(commands.Cog):
+    """Memés """
     def __init__(self, bot):
         self.bot = bot
 
