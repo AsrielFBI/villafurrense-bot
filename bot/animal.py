@@ -20,11 +20,6 @@ class animal(commands.Cog):
 
             Envia una foto de r/foxes
         """
-        #memes_submissions = reddit.subreddit('foxes').search('flair:"Pics!"') # Gets a random images from r/foxes with flair Pics!
-        #post_to_pick = random.randint(1, 10)
-        #for i in range(0, post_to_pick):
-        #    submission = next(x for x in memes_submissions if not x.stickied)
-
         await context.channel.send(getRedditImage('foxes', 'Pics!', None))
 
 
@@ -47,12 +42,11 @@ class animal(commands.Cog):
 
 
     @commands.command()
-    async def reptiles(self, context):
+    async def reptile(self, context):
         """Fotos de lagartos y reptiles
 
             Envia una foto de r/
         """
-
         await context.channel.send(getRedditImage('reptiles', Flair=None,Filter='is_self:0 NOT site:(500px.com OR abload.de OR deviantart.com OR deviantart.net OR fav.me OR fbcdn.net OR flickr.com OR forgifs.com OR giphy.com OR gfycat.com OR gifsoup.com OR gyazo.com OR imageshack.us OR imgclean.com OR imgur.com OR instagr.am OR instagram.com OR mediacru.sh OR media.tumblr.com OR min.us OR minus.com OR myimghost.com OR photobucket.com OR picsarus.com OR puu.sh OR staticflickr.com OR tinypic.com OR twitpic.com)'))
 
 
@@ -68,13 +62,18 @@ def getRedditImage(Subreddit : str,Flair : str ,Filter : str):
     Returns:
         [str]: [url from a reddit image]
     """
-    if Flair==None:
-        memes_submissions = reddit.subreddit(Subreddit).search(Filter) # Gets a random images from r/foxes with flair Pics!
-    else:
-        memes_submissions = reddit.subreddit(Subreddit).search('Flair:'+Flair) # Gets a random images from r/foxes with flair Pics!
-    post_to_pick = random.randint(1, 10)
-    for i in range(0, post_to_pick):
-        submission = next(x for x in memes_submissions if not x.stickied)
+    var=True
+    while var:
+        if Flair==None:
+            memes_submissions = reddit.subreddit(Subreddit).search(Filter) # Gets a random images from r/foxes with flair Pics!
+        else:
+            memes_submissions = reddit.subreddit(Subreddit).search('Flair:'+Flair) # Gets a random images from r/foxes with flair Pics!
+        post_to_pick = random.randint(1, 10)
+        for i in range(0, post_to_pick):
+            submission = next(x for x in memes_submissions if not x.stickied)
+        if submission.url.endswith('jpg'):
+            var=False
+            
     return submission.url
 
 def setup(bot):
