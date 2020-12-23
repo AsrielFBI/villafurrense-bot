@@ -12,4 +12,4 @@ python3 -m poetry init --no-interaction
 - Comando número aleatorio
 - Comando stickers que responga a un mensaje que se ha citado con -cry
 - Crear stickers animados (gif)
-- Pasar stickers a stickers2
+- Optimizar animal
