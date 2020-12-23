@@ -11,9 +11,5 @@ python3 -m poetry init --no-interaction
 - Mirar discord rich presence
 - Comando número aleatorio
 - Comando stickers que responga a un mensaje que se ha citado con -cry
-- Crear servidor
-- Modificar tamaño de stickers a 500x500 al añadir uno
 - Crear stickers animados (gif)
-- Go to horny jail meme
-- Comprobar si un sticker existe antes de usarlo
-- Comando roast
+- Pasar stickers a stickers2
