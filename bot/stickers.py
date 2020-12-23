@@ -1,52 +1,84 @@
-from math import isnan
 import discord
+from discord.ext import commands
 import os
 from PIL import Image
+from discord.ext.commands.core import command
 
-# Variables
-client = discord.Client()
-
-#stickersPath='../stickers/'
-stickersPath='/app/stickers/'
-    
 stickerSize=500
+stickersPath='../stickers/'
+#stickersPath='/app/stickers/'
 
 
- 
-#@client.event
-#async def addSticker(message):
-#    """ Downloads a sticker and converts it to png if it is other format
-#
-#    Args:
-#        message: contains the sticker to add
-#    """
-#    stickerName=message.content.split()[-1]
-#    print(stickerName)
-#    stickerExtension=message.content.split(".")[-1]
-#    if checkSticker(stickerName, stickerExtension)==0:
-#        await message.channel.send("El nombre de sticker ya existe")
-#        return
-#    if checkSticker(stickerName, stickerExtension)==1:
-#        await message.channel.send("El tipo de archivo no es válido")
-#        return
-#    
-#    if stickerExtension=='jpg':
-#        stickerFileName=stickerName+".jpg"
-#    else:
-#        stickerFileName=stickerName+".png"
-#
-#    stickerUrl=message.attachments[0].url
-#    var="wget -O %s%s %s"%(stickersPath, stickerFileName, stickerUrl)
-#    stickerPath="%s%s"%(stickersPath ,stickerFileName)
-#    os.system(var)
-#    convertPic(stickerPath, stickerName)
-#
-#    
-#    if stickerExtension=='jpg':
-#        var2="rm "+stickerPath
-#        os.system(var2)
-#    await message.channel.send("Sticker "+stickerName+" añadido")
+class stickers(commands.Cog):
+    def __init__(self, bot):
+        self.bot = bot
 
+    @commands.command()
+    async def add(self, context,arg1):
+        """ Añade un sticker 
+
+             Uso: seleccionar una imagen y en el cuadro de "añadir comentario"
+             poner fur add <nombre_sticker>
+        """
+        stickerExtension=context.message.attachments[0].url.split(".")[-1]
+        print(stickerExtension)
+        if checkSticker(arg1, stickerExtension)==0:
+            await context.channel.send("El nombre de sticker ya existe")
+            return
+        
+        if stickerExtension=='jpg':
+            stickerFileName=arg1+".jpg"
+        else:
+            stickerFileName=arg1+".png"
+
+        stickerUrl=context.message.attachments[0].url
+        var="wget -O %s%s %s"%(stickersPath, stickerFileName, stickerUrl)
+        stickerPath="%s%s"%(stickersPath ,stickerFileName)
+        os.system(var)
+        convertPic(stickerPath, arg1)
+
+        
+        if stickerExtension=='jpg':
+            var2="rm "+stickerPath
+            os.system(var2)
+        await context.channel.send("Sticker "+arg1+" añadido")
+
+
+    @commands.command()
+    async def list(self, context):
+        """ Nombre de los stickers añadidos
+
+        """
+        str=os.listdir(stickersPath)
+
+        str[:] = [s.replace('.png', '') for s in str]
+        str[:] = [s.replace("'", '') for s in str]
+        await context.channel.send(str)
+
+
+
+    @commands.command(name='s')
+    async def useSticker(self, context,sticker):
+        """ Usar un sticker
+
+            Uso: fur s <nombre_sticker>
+        """
+        stickerName=stickersPath
+        stickerName+=sticker
+        stickerName+=".png"
+        await context.channel.send(file=discord.File(stickerName))
+
+
+
+# Resize and image and save it as png
+def convertPic(picture, stickerName):
+    img = Image.open(picture)
+
+    wpercent = (stickerSize/float(img.size[0]))
+    hsize = int((float(img.size[1])*float(wpercent)))
+    img = img.resize((stickerSize,hsize), Image.ANTIALIAS)
+
+    img.save(stickersPath+stickerName+'.png')
 
 
 def checkSticker(stickerName, stickerExtension):
@@ -68,37 +100,9 @@ def checkSticker(stickerName, stickerExtension):
     if stickerExtension in ['jpg', 'png']:
         return 1
 
-@client.event
-async def useSticker(message):
-    stickerName=stickersPath
-    stickerName+=message.content[message.content.find(" ")+1:].split()[0]
-    stickerName+=".png"
-    await message.channel.send(file=discord.File(stickerName))
 
 
 
-# Resize and image and save it as png
-def convertPic(picture, stickerName):
-    img = Image.open(picture)
 
-    wpercent = (stickerSize/float(img.size[0]))
-    hsize = int((float(img.size[1])*float(wpercent)))
-    img = img.resize((stickerSize,hsize), Image.ANTIALIAS)
-
-    img.save(stickersPath+stickerName+'.png')
-    
-
-@client.event
-async def listStickers(message):
-    str=os.listdir(stickersPath)
-
-    str[:] = [s.replace('.png', '') for s in str]
-    str[:] = [s.replace("'", '') for s in str]
-    await message.channel.send(str)
-
-@client.event
-async def deleteSticker(message):
-    stickerName=message.content.split()[-1]
-    str='rm '+stickersPath+stickerName
-    os.system(str)
-    await message.channel.send(stickerName+' eliminado')
+def setup(bot):
+    bot.add_cog(stickers(bot))

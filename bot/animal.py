@@ -14,7 +14,7 @@ class animal(commands.Cog):
 
 
     @commands.command()
-    async def fox(self, context, *, user : discord.Member=None):
+    async def fox(self, context):
         """Fotos de zorros hermosos -/////-
 
             Envia una foto de r/foxes
@@ -28,7 +28,7 @@ class animal(commands.Cog):
 
 
     @commands.command()
-    async def wolf(self, context, *, user : discord.Member=None):
+    async def wolf(self, context):
         """Fotos de lobos lobitos lobones
 
             Envia una foto de r/wolves
@@ -37,7 +37,7 @@ class animal(commands.Cog):
 
 
     @commands.command()
-    async def fish(self, context, *, user : discord.Member=None):
+    async def fish(self, context):
         """Fotos de pescaitos
 
             Envia una foto de r/fish
@@ -45,7 +45,7 @@ class animal(commands.Cog):
         await context.channel.send(getRedditImage('fish','Pic', None))
 
     @commands.command()
-    async def reptiles(self, context, *, user : discord.Member=None):
+    async def reptiles(self, context):
         """Fotos de lagartos y reptiles
 
             Envia una foto de r/

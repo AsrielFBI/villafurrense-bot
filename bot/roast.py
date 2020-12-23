@@ -8,25 +8,25 @@ class roast(commands.Cog):
 
 
     @commands.command(name='aputo')
-    async def aputo(self, context, *, user : discord.Member=None):
+    async def aputo(self, context):
         """Asriel puto
         """
         await context.channel.send("Asriel puto")
 
     @commands.command(name='cputo')
-    async def cputo(self, context, *, user : discord.Member=None):
+    async def cputo(self, context):
         """Cracker puto
         """
         await context.channel.send("Cracker puto")
 
     @commands.command(name='teputo')
-    async def etputo(self, context, *, user : discord.Member=None):
+    async def etputo(self, context):
         """Teko puto
         """
         await context.channel.send("Teko puto")
 
     @commands.command(name='tputo')
-    async def tputo(self, context, *, user : discord.Member=None):
+    async def tputo(self, context):
         """Thedax puto
         """
         await context.channel.send("Thedax puto")
