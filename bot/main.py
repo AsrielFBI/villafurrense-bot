@@ -8,42 +8,8 @@ from discord.ext import commands
 from PIL import Image
 
 
-
-# Variables
-stickersPath="../stickers"
 bot = commands.Bot(command_prefix='fur ', owner_id = 315111397837111296)
 bot.remove_command('trauma')
-
-if os.path.isfile('~/villafurrense-bot/bot/help.txt') :
-    helptxt='~/villafurrense-bot/bot/help.txt'
-else:
-    helptxt='/app/bot/help.txt'
-
-#helptxt='/app/bot/help.txt'
-#helptxt='help.txt'
-#stickersPath='/app/stickers/'
-#stickersPath='../stickers/'
-
-
-
-# Commands
-@bot.command(name='version')
-async def version(context):
-    embed=discord.Embed(title="FurBot", description='El mejor bot furro')
-    embed.add_field(name='Version', value='V 0.2',inline=False)
-    print(os.path.exists('../stickers/'))
-    await context.message.channel.send(embed=embed)
-
-
-
-@bot.command(name='info')
-async def help(context):
-    """Muestra la info de Zaffy
-    """
-    f = open(helptxt, 'r')
-    general=f.read()
-    await context.channel.send(general)
-    f.close()
 
 
 @bot.command(name='reply')
@@ -89,8 +55,7 @@ async def on_message(message):
     await bot.process_commands(message)
 
 # Add extensions
-extensions=['roast', 'memes', 'fun', 'animal', 'stickers', 'utilities']
+extensions=['roast', 'memes', 'fun', 'animal', 'stickers', 'utilities', 'administration']
 for extension in extensions:
     bot.load_extension(extension)
-
 bot.run('Nzg4NDc3MDcyOTU1NjcwNTI4.X9kEfw.yg5Q_RitwWG7K0dTlQPs4-umziQ')

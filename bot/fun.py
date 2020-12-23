@@ -69,8 +69,6 @@ class fun(commands.Cog):
             await asyncio.sleep(.3)
             await tmp.edit(content='.')
             await asyncio.sleep(.3)
-        
-
 
 def setup(bot):
     bot.add_cog(fun(bot))
