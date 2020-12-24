@@ -2,3 +2,6 @@ discord.py
 Pillow
 praw
 ffmpeg
+sympy
+emoji   
+moviepy

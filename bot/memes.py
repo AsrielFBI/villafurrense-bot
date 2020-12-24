@@ -1,8 +1,13 @@
 from asyncio.tasks import sleep
+from operator import pos
 import discord
 from discord.ext import commands
-from PIL import Image, ImageFont, ImageDraw
+from PIL import Image, ImageFont, ImageDraw, ImageFilter
 import os
+from sympy import symbols, solve
+import emoji
+import moviepy.editor as mp
+import math
 
 
 if os.path.isdir('../memes/') :
@@ -120,6 +125,7 @@ class memes(commands.Cog):
         createMeme(("españa",'01'),avatarUrl,650,(0,0,0,0),False)
 
         # Create video
+        await context.channel.send('Procesando video')
         var='ffmpeg -loop 1 -i {}output.png -i {}españa.mp3 -filter:v scale=300:-1 -c:v libx264 -framerate 1 -tune stillimage -c:a aac -b:a 192k -pix_fmt yuv420p -shortest {}output.mp4'
         os.system(var.format(memePath,memePath,memePath))
         
@@ -168,6 +174,7 @@ class memes(commands.Cog):
         createMeme(("betis",'01'),avatarUrl,400,(-100,0,0,0),False)
 
         # Create video
+        await context.channel.send('Procesando video')
         var='ffmpeg -loop 1 -i {}output.png -i {}betis.mp3 -filter:v scale=300:-1 -c:v libx264 -framerate 1 -tune stillimage -c:a aac -b:a 192k -pix_fmt yuv420p -shortest {}output.mp4'
         os.system(var.format(memePath,memePath,memePath))
         
@@ -181,30 +188,136 @@ class memes(commands.Cog):
 
 
 
-    #@commands.command()
-    #async def smash(self, context, *, user : discord.Member=None):
-    #    avatarUrl=getUser(context,user).avatar_url
-    #    var="wget -O %s%s %s"%(memePath, "01.webp", avatarUrl)
-    #    os.system(var)
-#
-    #    output= Image.open(memePath+'smash'+'.png').convert("RGBA")
-#
-    #    # Text
-    #    txtImage = Image.new("L", (100, 100), 255)
-    #    title_font = ImageFont.truetype(memePath+'smash.ttf', 35)
-    #    text = "Yiffs into the figth"
-    #    name=str(getUser(context,user))[:-5]  # remove #1234
-    #    image_editable = ImageDraw.Draw(txtImage)
-    #    image_editable.text((460,132), text, (237, 230, 211), font=title_font)
-    #    image_editable.text((460,102), name, (237, 230, 211), font=title_font)
-#
-    #    #img=Image.open(memePath+'01.png').convert("RGBA")
-#
-    #    output.save(memePath+"output.png","PNG")
-    #    await context.channel.send(file=discord.File(memePath+"output.png"))
+    @commands.command()
+    async def smash(self, context, *, user : discord.Member=None):
+        avatarUrl=getUser(context,user).avatar_url
+        var="wget -O %s%s %s"%(memePath, "01.webp", avatarUrl)
+        os.system(var)
+        convertPic(memePath+"01.webp","01",300)
+
+        # variables
+        name=str(getUser(context,user))[:-5]  # remove #1234
+        txt = "Yiffs into the fight"
+
+        nameX=0
+        txtX=8
+        imageLayerX=400
+        imageLayerY=-40
+        avatarX=50
+        avatarY=150
+        shadowcolor = "black"
+        nameColor="white"
+        txtColor='orange'
+
+        # Calculate name font size, nameY, txtY depending on name
+        var=[150,150,150,150,150,130,130,130,120,120,120,110,110,110,110,110,100,100,90,90,90,90,90] # var[4]=150 text size for a name with 4 chars
+        x= symbols('x')
+        expr = len(name)*x-var[len(name)]
+        sol = solve(expr)
+        txtSize=len(name)*sol[0]
+
+        nameY=150-var[len(name)]
+        txtY=nameY+var[len(name)]
+        
+
+        # Requiremnts
+        output= Image.open(memePath+'smash'+'.png').convert("RGBA")
+        avatar=Image.open(memePath+'01'+'.png').convert("RGBA")
+
+        txtPic = Image.new('RGBA', (600, 300))
+        nameFont = ImageFont.truetype(memePath+'Haettenschweiler-Regular.ttf', txtSize)
+        txtFont = ImageFont.truetype(memePath+'Haettenschweiler-Regular.ttf', 70)
+        d = ImageDraw.Draw(txtPic)
+
+        ## Drop shadow name
+        d.text((nameX+8, nameY+8), name, font=nameFont, fill=shadowcolor)
+
+        # Drop shadow txt
+        d.text((txtX+5, txtY+5), txt, font=txtFont, fill=shadowcolor)
+
+        # Put text above drop shadows
+        d.text( (nameX, nameY),name, font=nameFont, fill=nameColor)
+        d.text( (txtX, txtY),txt, font=txtFont, fill=txtColor)
+
+        # Rotate text and paste it in meme
+        w=txtPic.rotate(10, expand=1)
+        output.paste(w, (imageLayerX,imageLayerY),  w)
+        
+        # Paste avatar
+        output.paste(avatar, (avatarX,avatarY),  avatar)
+
+        # Save result
+        output.save(memePath+'output.png')
+     
+        await context.channel.send(file=discord.File(memePath+"output.png"))
+
+        await sleep(1)
+        deleteRequirements(('01.webp', 'output.png', '01.png'))
 
 
 
+    @commands.command()
+    async def smash1(self, context, *, user : discord.Member=None):
+        avatarUrl=getUser(context,user).avatar_url
+        var="wget -O %s%s %s"%(memePath, "01.webp", avatarUrl)
+        os.system(var)
+        convertPic(memePath+"01.webp","01",1200)
+
+
+        await context.channel.send('Procesando video')
+
+
+
+        # variables
+        name=str(getUser(context,user))[:-5]  # remove #1234
+        txt = "Yiffs into the figth"
+
+        nameX=0
+        txtX=8
+        imageLayerX=400
+        imageLayerY=-40
+        avatarX=50
+        avatarY=150
+        shadowcolor = "black"
+        nameColor="white"
+        txtColor='orange'
+
+
+
+        video = mp.VideoFileClip(memePath+"smash.mp4")
+
+        logo = (mp.ImageClip(memePath+'01.png')
+                    .set_duration(video.duration-6)
+                    .set_end('00:00:06.12')
+                    .resize(height=2000) # if you need to resize...
+                    #.margin(right=8, top=8, opacity=0) # (optional) logo-border padding
+                    #.set_pos(("right","top")))
+                    .set_pos(lambda t: (-200-t*100, 'center'))
+                )
+        avatar = (mp.ImageClip(memePath+'01.png')
+                    .set_duration(video.duration-8)
+                    .set_start('00:00:06.12')
+                    .resize(height= lambda t: (1200-t*100))
+                    .set_pos((400,150))
+                )
+
+
+        final = mp.CompositeVideoClip([video, logo,avatar])
+        final.write_videofile(memePath+"output.mp4")
+        final.close()
+
+        await context.channel.send(file=discord.File(memePath+"output.mp4"))
+        deleteRequirements(('01.webp', 'output.mp4', '01.png'))
+
+
+                
+
+
+def posi(t):
+    if t<6:
+        return 0.0
+    else:
+        return 1.0
 
 
 def createMeme(pictures : list, avatar_url : str, avatar_size : int, position : list, invert : bool):
