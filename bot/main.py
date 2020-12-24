@@ -1,5 +1,6 @@
 import discord
 import os
+from discord import channel
 
 from discord.message import Message
 
@@ -28,8 +29,6 @@ async def on_ready():
 # When a message is posted
 @bot.event
 async def on_message(message):
-    if message.author == bot.user:
-        return
 
     if message.content.lower()==('owo'):
         await message.channel.send('OwO!')
