@@ -188,6 +188,8 @@ class memes(commands.Cog):
 
     @commands.command()
     async def communist(self, context, *, user : discord.Member=None):
+        """Viva el proletariado"""
+
         # Get user avatar
         avatarUrl=getUser(context,user).avatar_url
 
