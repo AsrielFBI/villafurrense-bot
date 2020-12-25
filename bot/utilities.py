@@ -16,7 +16,7 @@ class utilities(commands.Cog):
 
 
     @commands.command()
-    async def random(self, context,min :int ,max : int , *, user : discord.Member=None):
+    async def random(self, context,min :int=None ,max : int=None , *, user : discord.Member=None):
         """ Genera un número aleatorio
 
             Uso: fur random                 ---> Genera un numero entre 1 y 100
