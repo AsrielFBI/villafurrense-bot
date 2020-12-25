@@ -41,14 +41,15 @@ class utilities(commands.Cog):
 
 
 
-    @commands.command()
-    async def txt(self, context, arg,*, user : discord.Member=None):
+    @commands.command(name='txt')
+    async def txt(self, context, arg : str,*, user : discord.Member=None):
         """Texto a voz"""
         await context.channel.send("Procesando audio")
         ttmp3 = gTTS(text=arg, lang='es', slow=False)
         ttmp3.save(arg+'.mp3')
+        print(arg)
         await context.channel.send(file=discord.File(arg+'.mp3'))
-        os.system("rm "+arg+'.mp3')
+        os.system("rm *"+'.mp3')
 
 
 
