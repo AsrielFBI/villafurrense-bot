@@ -20,6 +20,13 @@ class roast(commands.Cog):
         """
         await context.channel.send("Cracker puto")
 
+
+    @commands.command(name='gaputo')
+    async def gaputo(self, context):
+        """Gala puto
+        """
+        await context.channel.send("Gala puto")
+
     @commands.command(name='teputo')
     async def etputo(self, context):
         """Teko puto
