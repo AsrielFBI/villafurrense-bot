@@ -5,3 +5,4 @@ ffmpeg
 sympy
 emoji   
 moviepy
+gtts
