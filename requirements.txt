@@ -6,3 +6,4 @@ sympy
 emoji   
 moviepy
 gtts
+youtube_dl

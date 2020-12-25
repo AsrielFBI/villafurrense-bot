@@ -6,6 +6,9 @@ from gtts import gTTS
 import os
 
 
+
+
+
 class utilities(commands.Cog):
     """Utilidades varias"""
     def __init__(self, bot):
@@ -45,12 +48,15 @@ class utilities(commands.Cog):
     async def txt(self, context, arg : str,*, user : discord.Member=None):
         """Texto a voz"""
         await context.channel.send("Procesando audio")
-        ttmp3 = gTTS(text=arg, lang='es', slow=False)
-        ttmp3.save(arg+'.mp3')
-        print(arg)
-        await context.channel.send(file=discord.File(arg+'.mp3'))
-        os.system("rm *"+'.mp3')
+        processAudio(arg)
+        #await context.channel.send(file=discord.File(arg+'.mp3'))
+        #os.system("rm *"+'.mp3')
 
+
+
+def processAudio(txt : str, ):
+    ttmp3 = gTTS(text=txt, lang='es', slow=False)
+    ttmp3.save(txt+'.mp3')
 
 
 def setup(bot):
