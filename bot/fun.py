@@ -3,6 +3,13 @@ import discord
 from discord.ext import commands
 import random
 import asyncio
+import os
+
+
+if os.path.isdir('../fun/Enanas/') :
+    enanasPath='../fun/Enanas/'
+else:
+    enanasPath='/app/fun/Enanas/'
 
 
 class fun(commands.Cog):
@@ -69,6 +76,13 @@ class fun(commands.Cog):
             await asyncio.sleep(.3)
             await tmp.edit(content='.')
             await asyncio.sleep(.3)
+
+    @commands.command()
+    async def enana(self, context, *, user : discord.Member=None):
+        output=random.choice(os.listdir(enanasPath))
+        await context.channel.send(file=discord.File(enanasPath+output), content=output.split(".")[0])
+
+
 
 def setup(bot):
     bot.add_cog(fun(bot))
