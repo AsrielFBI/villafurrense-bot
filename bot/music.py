@@ -71,7 +71,7 @@ class music(commands.Cog):
         """Plays a file from the local filesystem"""
         connected = ctx.author.voice
         if connected:
-            utilities.processAudio1(query)
+            utilities.processAudio(query)
 
             source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(query+'.mp3'))
             ctx.voice_client.play(source, after=lambda e: print('Player error: %s' % e) if e else None)
