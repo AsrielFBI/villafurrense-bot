@@ -310,6 +310,24 @@ class memes(commands.Cog):
         deleteRequirements(('01.webp', 'output.mp4', '01.png'))
 
 
+
+    @commands.command()
+    async def impostor(self, context, *, user : discord.Member=None):
+        """Quién es el impostor?
+
+        """
+        avatarUrl=getUser(context,user).avatar_url
+        print(avatarUrl)
+        
+        createMeme(("impostor",'01'),avatarUrl,205,(0,0,323,175),True)
+
+        # Send meme
+        await context.channel.send(file=discord.File(memePath+"output.png"))
+
+        # Delete user avatar and output
+        await sleep(1)
+        deleteRequirements(('01.webp','output.png','01.png'))
+
                 
 
 
