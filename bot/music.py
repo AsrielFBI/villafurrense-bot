@@ -69,6 +69,7 @@ class music(commands.Cog):
     @commands.command()
     async def play(self, ctx, *, query):
         """Plays a file from the local filesystem"""
+        discord.opus.load_opus()
         connected = ctx.author.voice
         if connected:
             utilities.processAudio(query)
@@ -92,7 +93,7 @@ class music(commands.Cog):
     @commands.command()
     async def stream(self, ctx, *, url):
         """Streams from a url (same as yt, but doesn't predownload)"""
-
+        discord.opus.load_opus()
         async with ctx.typing():
             player = await YTDLSource.from_url(url, loop=self.bot.loop, stream=True)
             ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
