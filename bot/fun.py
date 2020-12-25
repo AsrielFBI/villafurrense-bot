@@ -42,7 +42,7 @@ class fun(commands.Cog):
 
 
     @commands.command()
-    async def communist(self, context, *, user : discord.Member=None):
+    async def communism(self, context, *, user : discord.Member=None):
         """Serás un comunista bolivariano que apoya al Coletas?
         """
         num=random.randint(0,100)

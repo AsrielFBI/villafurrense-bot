@@ -186,6 +186,25 @@ class memes(commands.Cog):
         deleteRequirements(('01.webp', 'output.png', '01.png','output.mp4'))
         
 
+    @commands.command()
+    async def communist(self, context, *, user : discord.Member=None):
+        # Get user avatar
+        avatarUrl=getUser(context,user).avatar_url
+
+        # Create meme
+        createMeme(("communist",'01'),avatarUrl,400,(-100,0,0,0),False)
+
+        # Create video
+        await context.channel.send('Procesando video')
+        var='ffmpeg -loop 1 -i {}output.png -i {}communist.mp3 -filter:v scale=300:-1 -c:v libx264 -framerate 1 -tune stillimage -c:a aac -b:a 192k -pix_fmt yuv420p -shortest {}output.mp4'
+        os.system(var.format(memePath,memePath,memePath))
+        
+        # Send meme
+        await context.channel.send(file=discord.File(memePath+"output.mp4"))
+
+        # Delete user avatar and output
+        await sleep(1)
+        deleteRequirements(('01.webp', 'output.png', '01.png','output.mp4'))
 
 
     @commands.command()
