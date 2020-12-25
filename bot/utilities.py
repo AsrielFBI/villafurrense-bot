@@ -2,6 +2,9 @@ import discord
 from discord.ext import commands
 import asyncio
 import random
+from gtts import gTTS
+import os
+
 
 class utilities(commands.Cog):
     """Utilidades varias"""
@@ -38,6 +41,14 @@ class utilities(commands.Cog):
 
 
 
+    @commands.command()
+    async def translate(self, context, arg,*, user : discord.Member=None):
+        """Traduce cosas """
+        await context.channel.send("Procesando audio")
+        ttmp3 = gTTS(text=arg, lang='es', slow=False)
+        ttmp3.save(arg+'.mp3')
+        await context.channel.send(file=discord.File(arg+'.mp3'))
+        os.system("rm "+arg+'.mp3')
 
 
 
