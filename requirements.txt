@@ -7,3 +7,4 @@ emoji
 moviepy
 gtts
 youtube_dl
+PyNaCl
