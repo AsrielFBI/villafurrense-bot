@@ -1,14 +1,10 @@
-from asyncio.tasks import sleep
 from operator import pos
 import discord
 from discord.ext import commands
-from PIL import Image, ImageFont, ImageDraw, ImageFilter
+from PIL import Image, ImageFont, ImageDraw
 import os
 from sympy import symbols, solve
-import emoji
 import moviepy.editor as mp
-import math
-import proglog
 
 
 if os.path.isdir('../memes/') :
@@ -42,8 +38,7 @@ class memes(commands.Cog):
         await context.channel.send(file=discord.File(memePath+"output.png"))
 
         # Delete user avatar and output
-        await sleep(1)
-        deleteRequirements(('01.webp','output.png','01.png'))
+        deleteFiles(('01.webp','output.png','01.png'))
 
 
     @commands.command()
@@ -63,8 +58,7 @@ class memes(commands.Cog):
         await context.channel.send(file=discord.File(memePath+"output.png"))
 
         # Delete user avatar and output
-        await sleep(1)
-        deleteRequirements(('01.webp','output.png','01.png'))
+        deleteFiles(('01.webp','output.png','01.png'))
 
 
 
@@ -85,8 +79,7 @@ class memes(commands.Cog):
         await context.channel.send(file=discord.File(memePath+"output.png"))
 
         # Delete user avatar and output
-        await sleep(1)
-        deleteRequirements(('01.webp','output.png','01.png'))
+        deleteFiles(('01.webp','output.png','01.png'))
 
 
 
@@ -107,8 +100,7 @@ class memes(commands.Cog):
         await context.channel.send(file=discord.File(memePath+"output.png"))
 
         # Delete user avatar and output
-        await sleep(1)
-        deleteRequirements(('01.webp','output.png','01.png'))
+        deleteFiles(('01.webp','output.png','01.png'))
         
 
 
@@ -119,41 +111,14 @@ class memes(commands.Cog):
             Uso: fur españa "@<usuario>
         """
 
-        # Get user avatar
-        avatarUrl=getUser(context,user).avatar_url
-        var="wget -O %s%s %s"%(memePath, "01.webp", avatarUrl)
-        os.system(var)
-
-        convertPic(memePath+"01.webp",'01',1000)
-
-        
-        # Create video
         await context.channel.send('Procesando video')
-
-        meme = (mp.VideoFileClip(memePath+"españa.mp4")
-                    .set_opacity(.5)
-                    .set_pos(('center','center'))
-
-                )
+        createVideoMeme("españa",getUser(context,user))
        
-        avatar = (mp.ImageClip(memePath+'01.png')
-                    .set_duration(meme.duration)
-                    .resize(height=360)
-                    .set_pos(('center','center'))
-                )
-
-
-        final_video = mp.CompositeVideoClip([avatar, meme])
-        final_video.write_videofile(memePath+"output.mp4")
-        final_video.close()
-
-
         # Send meme
         await context.channel.send(file=discord.File(memePath+"output.mp4"))
 
-        # Delete user avatar and output
-        await sleep(1)
-        deleteRequirements(('01.webp','output.png','01.png','output.mp4'))
+        # Delete output
+        deleteFiles(['output.mp4'])
         
 
 
@@ -175,8 +140,7 @@ class memes(commands.Cog):
         await context.channel.send(file=discord.File(memePath+"output.png"))
 
         # Delete user avatar and output
-        await sleep(1)
-        deleteRequirements(('01.webp','output.png','01.png'))
+        deleteFiles(('01.webp','output.png','01.png'))
         
 
 
@@ -186,71 +150,28 @@ class memes(commands.Cog):
 
         """
 
-        # Get user avatar
-        avatarUrl=getUser(context,user).avatar_url
-
-        # Create meme
-        createMeme(("betis",'01'),avatarUrl,400,(-100,0,0,0),False)
-
-        # Create video
         await context.channel.send('Procesando video')
-        var='ffmpeg -loop 1 -i {}output.png -i {}betis.mp3 -filter:v scale=300:-1 -c:v libx264 -framerate 1 -tune stillimage -c:a aac -b:a 192k -pix_fmt yuv420p -shortest {}output.mp4'
-        os.system(var.format(memePath,memePath,memePath))
-        
+        createVideoMeme("betis",getUser(context,user))
+       
         # Send meme
         await context.channel.send(file=discord.File(memePath+"output.mp4"))
 
-        # Delete user avatar and output
-        await sleep(1)
-        deleteRequirements(('01.webp', 'output.png', '01.png','output.mp4'))
+        # Delete output
+        deleteFiles(['output.mp4'])
         
 
     @commands.command()
     async def communist(self, context, *, user : discord.Member=None):
         """Viva el proletariado"""
 
-        # Get user avatar
-        avatarUrl=getUser(context,user).avatar_url
-        var="wget -O %s%s %s"%(memePath, "01.webp", avatarUrl)
-        os.system(var)
-
-        convertPic(memePath+"01.webp",'01',1000)
-        # Create meme
-        #createMeme(("communist",'01'),avatarUrl,400,(-100,0,0,0),False)
-
-        # Create video
         await context.channel.send('Procesando video')
-
-
-        meme = (mp.VideoFileClip(memePath+"communist.mp4")
-                    .set_opacity(.5)
-                    .set_pos(('center','center'))
-                    .set_duration('00:00:33')
-
-                )
+        createVideoMeme("communist",getUser(context,user))
        
-        avatar = (mp.ImageClip(memePath+'01.png')
-                    .set_duration(meme.duration)
-                    .resize(height=360)
-                    .set_pos(('center','center'))
-                )
-
-
-        music =  mp.AudioFileClip(memePath+"communist.mp3")
-
-
-        final_music = mp.CompositeAudioClip([music])
-        final_video = mp.CompositeVideoClip([avatar, meme])
-        final_video.audio = final_music
-        final_video.write_videofile(memePath+"output.mp4")
-        final_video.close()
-        
         # Send meme
         await context.channel.send(file=discord.File(memePath+"output.mp4"))
 
-        # Delete user avatar and output
-        await sleep(1)
-        deleteRequirements(('01.webp', '01.png','output.mp4'))
+        # Delete output
+        deleteFiles(['output.mp4'])
 
 
     @commands.command()
@@ -259,42 +180,14 @@ class memes(commands.Cog):
             
             Uso: fur falange "@<usuario>
         """
-
-        # Get user avatar
-        avatarUrl=getUser(context,user).avatar_url
-        var="wget -O %s%s %s"%(memePath, "01.webp", avatarUrl)
-        os.system(var)
-
-        convertPic(memePath+"01.webp",'01',1000)
-
-        
-        # Create video
         await context.channel.send('Procesando video')
-
-        meme = (mp.VideoFileClip(memePath+"falange.mp4")
-                    .set_opacity(.5)
-                    .set_pos(('center','center'))
-
-                )
+        createVideoMeme("falange",getUser(context,user))
        
-        avatar = (mp.ImageClip(memePath+'01.png')
-                    .set_duration(meme.duration)
-                    .resize(height=360)
-                    .set_pos(('center','center'))
-                )
-
-
-        final_video = mp.CompositeVideoClip([avatar, meme])
-        final_video.write_videofile(memePath+"output.mp4")
-        final_video.close()
-
-
         # Send meme
         await context.channel.send(file=discord.File(memePath+"output.mp4"))
 
-        # Delete user avatar and output
-        await sleep(1)
-        deleteRequirements(('01.webp','output.png','01.png','output.mp4'))
+        # Delete output
+        deleteFiles(['output.mp4'])
 
 
 
@@ -369,63 +262,62 @@ class memes(commands.Cog):
      
         await context.channel.send(file=discord.File(memePath+"output.png"))
 
-        await sleep(1)
-        deleteRequirements(('01.webp', 'output.png', '01.png'))
+        deleteFiles(('01.webp', 'output.png', '01.png'))
 
 
 
-    @commands.command()
-    async def smash1(self, context, *, user : discord.Member=None):
-        avatarUrl=getUser(context,user).avatar_url
-        var="wget -O %s%s %s"%(memePath, "01.webp", avatarUrl)
-        os.system(var)
-        convertPic(memePath+"01.webp","01",1200)
-
-
-        await context.channel.send('Procesando video')
-
-
-
-        # variables
-        name=str(getUser(context,user))[:-5]  # remove #1234
-        txt = "Yiffs into the figth"
-
-        nameX=0
-        txtX=8
-        imageLayerX=400
-        imageLayerY=-40
-        avatarX=50
-        avatarY=150
-        shadowcolor = "black"
-        nameColor="white"
-        txtColor='orange'
-
-
-
-        video = mp.VideoFileClip(memePath+"smash.mp4")
-
-        logo = (mp.ImageClip(memePath+'01.png')
-                    .set_duration(video.duration-6)
-                    .set_end('00:00:06.12')
-                    .resize(height=2000) # if you need to resize...
-                    #.margin(right=8, top=8, opacity=0) # (optional) logo-border padding
-                    #.set_pos(("right","top")))
-                    .set_pos(lambda t: (-200-t*100, 'center'))
-                )
-        avatar = (mp.ImageClip(memePath+'01.png')
-                    .set_duration(video.duration-8)
-                    .set_start('00:00:06.12')
-                    .resize(height=resize_func)
-                    .set_pos((400,150))
-                )
-
-
-        final = mp.CompositeVideoClip([video, logo,avatar])
-        final.write_videofile(memePath+"output.mp4")
-        final.close()
-
-        await context.channel.send(file=discord.File(memePath+"output.mp4"))
-        deleteRequirements(('01.webp', 'output.mp4', '01.png'))
+    #@commands.command()
+    #async def smash1(self, context, *, user : discord.Member=None):
+    #    avatarUrl=getUser(context,user).avatar_url
+    #    var="wget -O %s%s %s"%(memePath, "01.webp", avatarUrl)
+    #    os.system(var)
+    #    convertPic(memePath+"01.webp","01",1200)
+#
+#
+    #    await context.channel.send('Procesando video')
+#
+#
+#
+    #    # variables
+    #    name=str(getUser(context,user))[:-5]  # remove #1234
+    #    txt = "Yiffs into the figth"
+#
+    #    nameX=0
+    #    txtX=8
+    #    imageLayerX=400
+    #    imageLayerY=-40
+    #    avatarX=50
+    #    avatarY=150
+    #    shadowcolor = "black"
+    #    nameColor="white"
+    #    txtColor='orange'
+#
+#
+#
+    #    video = mp.VideoFileClip(memePath+"smash.mp4")
+#
+    #    logo = (mp.ImageClip(memePath+'01.png')
+    #                .set_duration(video.duration-6)
+    #                .set_end('00:00:06.12')
+    #                .resize(height=2000) # if you need to resize...
+    #                #.margin(right=8, top=8, opacity=0) # (optional) logo-border padding
+    #                #.set_pos(("right","top")))
+    #                .set_pos(lambda t: (-200-t*100, 'center'))
+    #            )
+    #    avatar = (mp.ImageClip(memePath+'01.png')
+    #                .set_duration(video.duration-8)
+    #                .set_start('00:00:06.12')
+    #                .resize(height=resize_func)
+    #                .set_pos((400,150))
+    #            )
+#
+#
+    #    final = mp.CompositeVideoClip([video, logo,avatar])
+    #    final.write_videofile(memePath+"output.mp4")
+    #    final.close()
+#
+    #    await context.channel.send(file=discord.File(memePath+"output.mp4"))
+    #    deleteFiles(('01.webp', 'output.mp4', '01.png'))
 
 
 
@@ -443,17 +335,10 @@ class memes(commands.Cog):
         await context.channel.send(file=discord.File(memePath+"output.png"))
 
         # Delete user avatar and output
-        await sleep(1)
-        deleteRequirements(('01.webp','output.png','01.png'))
+        deleteFiles(('01.webp','output.png','01.png'))
 
                 
 
-
-def posi(t):
-    if t<6:
-        return 0.0
-    else:
-        return 1.0
 
 
 def createMeme(pictures : list, avatar_url : str, avatar_size : int, position : list, invert : bool):
@@ -500,6 +385,50 @@ def createMeme(pictures : list, avatar_url : str, avatar_size : int, position : 
 
 
 
+def createVideoMeme(meme : str, user : discord.Member):
+    """Creates a video with a 50% transparency video meme above
+
+    Args:
+        meme (str): name of the video meme to put above
+        user (discord.Member): user to put in the video
+    """
+    getUserAvatar(user)
+    userName=str(user)
+    picturePath=memePath+userName
+    convertPic(picture=picturePath+'.webp', imgName=userName, imgSize=1000)
+
+    # Create video
+    memeVideo = (mp.VideoFileClip(memePath+meme+".mp4")
+                .set_opacity(.5)
+                .set_pos(('center','center'))
+
+            )
+    
+    avatar = (mp.ImageClip(memePath+userName+'.png')
+                .set_duration(memeVideo.duration)
+                .resize(height=360)
+                .set_pos(('center','center'))
+            )
+
+
+    final_video = mp.CompositeVideoClip([avatar, memeVideo])
+    final_video.write_videofile(memePath+"output.mp4")
+    final_video.close()
+    deleteFiles((picturePath+'.webp',picturePath+'.png'))
+
+
+
+def getUserAvatar(user : discord.Member):
+    """Downloads the avatar of a user
+
+    Args:
+        user (discord.Member): user to download avatar from
+    """
+    avatarUrl=user.avatar_url
+    var="wget -O %s%s %s"%(memePath, str(user)+'.webp', avatarUrl)
+    os.system(var)
+
+
 def convertPic(picture : str, imgName : str, imgSize : str):
     """Converts an image to PNG with a differents size
 
@@ -535,7 +464,7 @@ def getUser(context, user : discord.Member=None):
     return avatarUrl
     
 
-def deleteRequirements(elements : list):
+def deleteFiles(elements : list):
     """ Delete files needed to create a meme
 
     Args:
