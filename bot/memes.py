@@ -250,14 +250,14 @@ class memes(commands.Cog):
 
         # Delete user avatar and output
         await sleep(1)
-        deleteRequirements(('01.webp', 'output.png', '01.png','output.mp4'))
+        deleteRequirements(('01.webp', '01.png','output.mp4'))
 
 
     @commands.command()
     async def falange(self, context, *, user : discord.Member=None):
-        """Arriba España!!!
+        """Viva Francisco Franco!!!
             
-            Uso: fur españa "@<usuario>
+            Uso: fur falange "@<usuario>
         """
 
         # Get user avatar
@@ -303,6 +303,11 @@ class memes(commands.Cog):
 
     @commands.command()
     async def smash(self, context, *, user : discord.Member=None):
+        """Has sido invitado a Smash :0
+
+        """
+
+
         avatarUrl=getUser(context,user).avatar_url
         var="wget -O %s%s %s"%(memePath, "01.webp", avatarUrl)
         os.system(var)
@@ -410,7 +415,7 @@ class memes(commands.Cog):
         avatar = (mp.ImageClip(memePath+'01.png')
                     .set_duration(video.duration-8)
                     .set_start('00:00:06.12')
-                    .resize(height= lambda t: (1200-t*100))
+                    .resize(height=resize_func)
                     .set_pos((400,150))
                 )
 
@@ -538,6 +543,14 @@ def deleteRequirements(elements : list):
     """
     for x in elements:
         os.system("rm "+memePath+x)
+
+
+def resize_func(t):
+    if t > 7 :
+        return 1200 - 10*t  # Zoom-in.
+
+    else: # 6 < t
+        return 1  # Zoom-out.
 
 
 def setup(bot):

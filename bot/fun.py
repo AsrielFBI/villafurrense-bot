@@ -67,18 +67,8 @@ class fun(commands.Cog):
 
 
     @commands.command()
-    async def ball(self, context, *, user : discord.Member=None):
-        tmp =         await context.channel.send( '.')
-
-        for x in range(20):
-            
-            await tmp.edit(content='   .')
-            await asyncio.sleep(.3)
-            await tmp.edit(content='.')
-            await asyncio.sleep(.3)
-
-    @commands.command()
     async def enana(self, context, *, user : discord.Member=None):
+        """Enana sorpresa :0"""
         output=random.choice(os.listdir(enanasPath))
         await context.channel.send(file=discord.File(enanasPath+output), content=output.split(".")[0])
 
