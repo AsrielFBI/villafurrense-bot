@@ -8,3 +8,4 @@ moviepy
 gtts
 youtube_dl
 PyNaCl
+python-dotenv

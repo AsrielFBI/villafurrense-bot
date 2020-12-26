@@ -1,12 +1,28 @@
 import discord
 import os
 from discord import channel
-
+from discord import activity
 from discord.message import Message
-
 import stickers
 from discord.ext import commands
 from PIL import Image
+from dotenv import load_dotenv
+
+# Change where is the token
+load_dotenv()
+if os.path.isdir('../memes/') :
+    token= os.getenv('DISCORD_TOKEN')
+else:
+    token=os.environ.get('DISCORD_TOKEN', None)
+
+
+# Change discord game and activity depending if it's running in server
+if os.path.isdir('../memes/') :
+    status=discord.Status.do_not_disturb
+    activity=discord.Game('En mantenimiento')
+else:
+    status=discord.Status.online
+    activity=discord.Game('Cosas furries')
 
 
 bot = commands.Bot(command_prefix='fur ', owner_id = 315111397837111296)
@@ -23,7 +39,7 @@ async def reply(context ):
 @bot.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(bot))
-    await bot.change_presence(status=discord.Status.do_not_disturb,activity=discord.Game('En mantenimiento'))
+    await bot.change_presence(status=status,activity=activity)
 
 
 # When a message is posted
@@ -43,10 +59,6 @@ async def on_message(message):
     if "yiff" in message.content:
         await message.channel.send('¿He oído yiff?')
 
-    if message.content=='mantenimiento':
-        game = discord.Game("En manetenimiento")
-        await bot.change_presence(status=discord.Status.do_not_disturb, activity=game)
-
     if message.content.startswith('!hello'):
         print(message.reference)
         await message.reply('Hello!', mention_author=True)
@@ -57,4 +69,6 @@ async def on_message(message):
 extensions=['roast', 'memes', 'fun', 'animal', 'stickers', 'utilities', 'administration', 'music']
 for extension in extensions:
     bot.load_extension(extension)
-bot.run(os.environ.get('DISCORD_TOKEN', None))
+
+
+bot.run(token)
