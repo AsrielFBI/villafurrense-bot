@@ -57,4 +57,4 @@ async def on_message(message):
 extensions=['roast', 'memes', 'fun', 'animal', 'stickers', 'utilities', 'administration', 'music']
 for extension in extensions:
     bot.load_extension(extension)
-bot.run('Nzg4NDc3MDcyOTU1NjcwNTI4.X9kEfw.yg5Q_RitwWG7K0dTlQPs4-umziQ')
+bot.run(os.environ.get('DISCORD_TOKEN', None))
