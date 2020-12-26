@@ -8,30 +8,36 @@ class roast(commands.Cog):
         self.bot = bot
 
 
-    @commands.command(name='aputo')
+    @commands.command()
     async def aputo(self, context):
         """Asriel puto
         """
         await context.channel.send("Asriel puto")
 
-    @commands.command(name='cputo')
+    @commands.command()
     async def cputo(self, context):
         """Cracker puto
         """
         await context.channel.send("Cracker puto")
 
 
-    @commands.command(name='gaputo')
+    @commands.command()
     async def gaputo(self, context):
         """Gala puto
         """
         await context.channel.send("Gala puto")
 
-    @commands.command(name='teputo')
+    @commands.command()
     async def etputo(self, context):
         """Teko puto
         """
         await context.channel.send("Teko puto")
+
+    @commands.command()
+    async def sliputo(self, context):
+        """Sliva puto
+        """
+        await context.channel.send("Sliva puto")
 
     @commands.command(name='tputo')
     async def tputo(self, context):
@@ -39,7 +45,13 @@ class roast(commands.Cog):
         """
         await context.channel.send("Thedax puto")
 
-    @commands.command(name='insult')
+    @commands.command()
+    async def zaputo(self, context):
+        """Zaffy puto
+        """
+        await context.channel.send("Zaffy puto")
+
+    @commands.command()
     async def insult(self, context, *, user : discord.Member=None):
         """Insulta gente 7w7
 
