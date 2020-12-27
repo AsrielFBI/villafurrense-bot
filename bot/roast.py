@@ -14,6 +14,14 @@ class roast(commands.Cog):
         """
         await context.channel.send("Asriel puto")
 
+
+    @commands.command()
+    async def aguapo(self, context):
+        """Le dices guapo al Asriel
+        """
+        file = discord.File("stickers/rac.jpg", filename = "rac.jpg")
+        await ctx.send("Gracias wapo, feliz navidad" ,file = file)
+
     @commands.command()
     async def cputo(self, context):
         """Cracker puto
@@ -75,7 +83,12 @@ class roast(commands.Cog):
         insults.append('eres tan inútil que thedax se volvería independentista solo por no vivir en el mismo país que tú')
         insults.append('das tanto asco que ni los coches bomba de ETA explotarían contigo dentro')
         insults.append('das tanto asco que para Alex eres infumable')
-        insults.append('eres tan feo que ni los nazis irían a invadirte tu casa')
+        insults.append('Tu madre es tan gorda, que cuando le preguntaron por su peso dijeron que no le estaban preguntando por su número de teléfono.')
+        insults.append('Tu madre es tan gorda, que las navidades pasadas le hice una foto, y aun se está imprimiendo')
+        insults.append('Tu madre es tan gorda y vieja, que cuando dios dijo "QUE SE HAGA LA LUZ" le preguntó a tu madre para apartarse')
+        insults.append('Tu madre es tan gorda, que cuando se cayó al suelo nadie se rió, a excepción del suelo que se estaba partiendo')
+        insults.append('Tu madre es tan gorda, que cuando no come; Las acciones de comida caen en picado')
+        insults.append('Tu madre es tan gorda, que si se compra un abrigo de pieles, se extingue toda una raza')
         output='{} %s '%(random.choice(insults))
         await context.channel.send(output.format(usuario))
 
