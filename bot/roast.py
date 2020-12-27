@@ -19,8 +19,8 @@ class roast(commands.Cog):
     async def aguapo(self, context):
         """Le dices guapo al Asriel
         """
-        file = discord.File("stickers/rac.jpg", filename = "rac.jpg")
-        await ctx.send("Gracias wapo, feliz navidad" ,file = file)
+        file = discord.File("../stickers/rac.jpg", filename = "rac.jpg")
+        await context.send("Gracias wapo, feliz navidad" ,file = file)
 
     @commands.command()
     async def cputo(self, context):

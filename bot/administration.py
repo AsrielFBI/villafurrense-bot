@@ -6,10 +6,10 @@ from discord.ext.commands.core import is_owner
 
 
 
-if os.path.isfile('~/villafurrense-bot/bot/help.txt') :
-    helptxt='~/villafurrense-bot/bot/help.txt'
+if os.path.isfile('help.txt') :
+    helptxt='help.txt'
 else:
-    helptxt='/app/bot/help.txt'
+    helptxt='help.txt'
 
 
 
@@ -34,7 +34,7 @@ class administration(commands.Cog):
 
 
     @commands.command(name='info')
-    async def help(context):
+    async def help(self, context, user : discord.Member=None):
         """Muestra la info de Zaffy
         """
         f = open(helptxt, 'r')
