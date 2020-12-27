@@ -3,11 +3,12 @@
 
  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
--aputo = se designa un insulto a Asriel   
+-aputo = Se designa un insulto a Asriel
+-aguapo = Le dices guapo al Asriel   
 -cputo = Se designa un insulto a Cracker
 -tputo = Se designa para decirle un insulto a Thedax      
--help = algo peor que esto
--info = es esto bro    
+-help = Algo peor que esto
+-info = Es esto bro    
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
