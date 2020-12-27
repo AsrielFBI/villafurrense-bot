@@ -337,6 +337,23 @@ class memes(commands.Cog):
         # Delete user avatar and output
         deleteFiles(('01.webp','output.png','01.png'))
 
+
+
+    @commands.command()
+    async def stonks(self, context, *, user : discord.Member=None):
+        """Stonks"""
+
+        # Get user avatar
+        avatarUrl=getUser(context,user).avatar_url
+
+        createMeme(('stonks','01'),avatarUrl,236,(0,0,63,25),True)
+
+        # Send meme
+        await context.channel.send(file=discord.File(memePath+"output.png"))
+
+        # Delete user avatar and output
+        deleteFiles(('01.webp','output.png','01.png'))
+
                 
 
 
