@@ -2,11 +2,13 @@ import discord
 import os
 from discord import channel
 from discord import activity
+from discord import voice_client
 from discord.message import Message
 import stickers
 from discord.ext import commands
 from PIL import Image
 from dotenv import load_dotenv
+import utilities
 
 # Change where is the token
 load_dotenv()
@@ -56,7 +58,7 @@ async def on_message(message):
         await message.channel.send('EwE!')
     if message.content.lower()==('awa'):
         await message.channel.send('AwA!')
-    if "yiff" in message.content:
+    if "yiff" in message.content and message.author != bot.user:
         await message.channel.send('¿He oído yiff?')
 
     if message.content.startswith('!hello'):
