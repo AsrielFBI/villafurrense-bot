@@ -67,12 +67,17 @@ class fun(commands.Cog):
 
 
     @commands.command()
-    async def enana(self, context, arg : str, *, user : discord.Member=None):
+    async def enana(self, context, arg : str=None, *, user : discord.Member=None):
         """Enana sorpresa :0"""
+        output='sdfaf'
+        print(arg)
         if arg==None:
             output=random.choice(os.listdir(enanasPath))
         else:
-            output=arg+'.png'
+            for filenames in os.listdir(enanasPath):
+                print(filenames)
+                if arg in filenames.lower():
+                    output=filenames
         await context.channel.send(file=discord.File(enanasPath+output), content=output.split(".")[0])
 
 
