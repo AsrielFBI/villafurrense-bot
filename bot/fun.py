@@ -68,19 +68,31 @@ class fun(commands.Cog):
 
     @commands.command()
     async def enana(self, context, arg : str=None, *, user : discord.Member=None):
-        """Enana sorpresa :0"""
-        output='sdfaf'
+        """Elije una enana o consigue una aleatoria de forma totalmente gratuita
+        
+            Uso:
+                fur enana           ---> Enana aleatoria
+                fur enana <palabra> ---> Enana que contega palabra 
+        """
         print(arg)
         if arg==None:
             output=random.choice(os.listdir(enanasPath))
         else:
             for filenames in os.listdir(enanasPath):
-                print(filenames)
                 if arg in filenames.lower():
                     output=filenames
         await context.channel.send(file=discord.File(enanasPath+output), content=output.split(".")[0])
 
 
+    @commands.command()
+    async def enanalist(self, context, *, user : discord.Member=None):
+        """Lista todas las enanas existentes"""
+        str=os.listdir(enanasPath)
+        str[:] = [s.replace('.png', '') for s in str]
+        str[:] = [s.replace("'", '') for s in str]
+        await context.channel.send(str)
+
+    
 
 def setup(bot):
     bot.add_cog(fun(bot))
