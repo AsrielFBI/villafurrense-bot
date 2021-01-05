@@ -27,7 +27,7 @@ else:
     activity=discord.Game('Cosas furries')
 
 
-bot = commands.Bot(command_prefix='fur ', owner_id = 315111397837111296)
+bot = commands.Bot(command_prefix=['fur ','Fur '], owner_id = 315111397837111296)
 bot.remove_command('trauma')
 
 
