@@ -34,6 +34,11 @@ class roast(commands.Cog):
         """Gala puto
         """
         await context.channel.send("Gala puto")
+    @commands.command()
+    async def garicj(self, context):
+        """Gala rich
+        """
+        await context.channel.send("Gala rich")
 
     @commands.command()
     async def peputo(self, context):
