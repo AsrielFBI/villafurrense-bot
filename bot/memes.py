@@ -432,9 +432,7 @@ def createVideoMeme(meme : str, user : discord.Member):
         user (discord.Member): user to put in the video
     """
     getUserAvatar(user)
-    userName=str(user)
-    picturePath=memePath+userName
-    convertPic(picture=picturePath+'.webp', imgName=userName, imgSize=1000)
+    convertPic(picture=picturePath+'.webp', imgName='01', imgSize=1000)
 
     # Create video
     memeVideo = (mp.VideoFileClip(memePath+meme+".mp4")
@@ -443,7 +441,7 @@ def createVideoMeme(meme : str, user : discord.Member):
 
             )
     
-    avatar = (mp.ImageClip(memePath+userName+'.png')
+    avatar = (mp.ImageClip(memePath+'01'+'.png')
                 .set_duration(memeVideo.duration)
                 .resize(height=360)
                 .set_pos(('center','center'))
@@ -453,7 +451,7 @@ def createVideoMeme(meme : str, user : discord.Member):
     final_video = mp.CompositeVideoClip([avatar, memeVideo])
     final_video.write_videofile(memePath+"output.mp4")
     final_video.close()
-    deleteFiles((picturePath+'.webp',picturePath+'.png'))
+    deleteFiles(('01'+'.webp','01+'.png'))
 
 
 
