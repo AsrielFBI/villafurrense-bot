@@ -432,7 +432,7 @@ def createVideoMeme(meme : str, user : discord.Member):
         user (discord.Member): user to put in the video
     """
     getUserAvatar(user)
-    convertPic(picture=picturePath+'.webp', imgName='01', imgSize=1000)
+    convertPic(picture=memePath+'01.webp', imgName='01', imgSize=1000)
 
     # Create video
     memeVideo = (mp.VideoFileClip(memePath+meme+".mp4")
@@ -462,7 +462,7 @@ def getUserAvatar(user : discord.Member):
         user (discord.Member): user to download avatar from
     """
     avatarUrl=user.avatar_url
-    var="wget -O %s%s %s"%(memePath, str(user)+'.webp', avatarUrl)
+    var="wget -O %s%s %s"%(memePath,'01.webp', avatarUrl)
     os.system(var)
 
 
