@@ -27,8 +27,8 @@ else:
     activity=discord.Game('Cosas furries')
 
 
-prefix=map(''.join, itertools.product(*((c.upper(), c.lower()) for c in 'Fur ')))
-bot = commands.Bot(command_prefix=prefix, owner_id = 315111397837111296)
+
+bot = commands.Bot(command_prefix='fur ', owner_id = 315111397837111296)
 bot.remove_command('trauma')
 
 
