@@ -2,8 +2,7 @@ discord.py
 Pillow
 praw
 ffmpeg
-sympy
-emoji   
+sympy 
 moviepy
 gtts
 youtube_dl

@@ -74,7 +74,6 @@ class fun(commands.Cog):
                 fur enana           ---> Enana aleatoria
                 fur enana <palabra> ---> Enana que contega palabra 
         """
-        print(arg)
         if arg==None:
             output=random.choice(os.listdir(enanasPath))
         else:
