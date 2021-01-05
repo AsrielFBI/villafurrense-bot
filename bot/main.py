@@ -8,7 +8,7 @@ import stickers
 from discord.ext import commands
 from PIL import Image
 from dotenv import load_dotenv
-import utilities
+import itertools
 
 # Change where is the token
 load_dotenv()
@@ -27,7 +27,8 @@ else:
     activity=discord.Game('Cosas furries')
 
 
-bot = commands.Bot(command_prefix=['fur ','Fur '], owner_id = 315111397837111296)
+prefix=map(''.join, itertools.product(*((c.upper(), c.lower()) for c in 'Fur ')))
+bot = commands.Bot(command_prefix=prefix, owner_id = 315111397837111296)
 bot.remove_command('trauma')
 
 
