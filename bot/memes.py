@@ -451,7 +451,7 @@ def createVideoMeme(meme : str, user : discord.Member):
     final_video = mp.CompositeVideoClip([avatar, memeVideo])
     final_video.write_videofile(memePath+"output.mp4")
     final_video.close()
-    deleteFiles(('01'+'.webp','01+'.png'))
+    deleteFiles(('01'+'.webp','01'+'.png'))
 
 
 
