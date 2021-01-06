@@ -95,6 +95,8 @@ class roast(commands.Cog):
         insults.append('Tu madre es tan gorda, que cuando se cayó al suelo nadie se rió, a excepción del suelo que se estaba partiendo')
         insults.append('Tu madre es tan gorda, que cuando no come; Las acciones de comida caen en picado')
         insults.append('Tu madre es tan gorda, que si se compra un abrigo de pieles, se extingue toda una raza')
+        insults.append('Eres tan infantil que tienes que discutir con Cracker quien es el bottom')
+
         output='{} %s '%(random.choice(insults))
         await context.channel.send(output.format(usuario))
 
